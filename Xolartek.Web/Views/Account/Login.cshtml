@@ -1,4 +1,4 @@
-﻿@model Xolartek.Web.Models.RegisterModel
+﻿@model Xolartek.Web.Models.LoginModel
 
 <div class="container-fluid">
     <div class="row">
@@ -22,26 +22,23 @@
                             @Html.ValidationMessageFor(model => model.UserName)
                         </li>
                         <li>
-                            @Html.LabelFor(m => m.Email)
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Email)
-                        </li>
-                        <li>
                             @Html.LabelFor(m => m.Password)
                             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.Password)
                         </li>
                         <li>
-                            @Html.LabelFor(m => m.ConfirmPassword)
-                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                            @Html.CheckBoxFor(model => model.RememberMe) remember me
                         </li>
                     </ol>
                     <div style="text-align:right">
-                        <input class="btn btn-primary" type="submit" value="Register" />
+                        <input class="btn btn-primary" type="submit" value="Sign in" />
                     </div>
                 </fieldset>
             }
         </div>
     </div>
 </div>
+
+@section scripts {
+
+}

@@ -11,7 +11,7 @@ namespace Xolartek.Web.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        // GET: Account
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -46,6 +46,45 @@ namespace Xolartek.Web.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Membership.ValidateUser(model.UserName, model.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    return RedirectToAction("Members", "Account");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Members()
+        {
+            return View();
         }
 
         #region Status Codes
