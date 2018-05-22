@@ -49,13 +49,19 @@ namespace Xolartek.Web.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Login()
+        public ActionResult Login(string ReturnUrl)
         {
-            return View();
+            LoginModel model = new LoginModel();
+            if (Url.IsLocalUrl(ReturnUrl) && !string.IsNullOrEmpty(ReturnUrl))
+            {
+                model.ReturnUrl = ReturnUrl;
+            }
+            return View(model);
         }
 
-        [AllowAnonymous]
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
@@ -63,7 +69,15 @@ namespace Xolartek.Web.Controllers
                 if (Membership.ValidateUser(model.UserName, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    return RedirectToAction("Members", "Account");
+
+                    if(!string.IsNullOrEmpty(model.ReturnUrl))
+                    {
+                        return Redirect(model.ReturnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Members", "Account");
+                    }
                 }
                 else
                 {

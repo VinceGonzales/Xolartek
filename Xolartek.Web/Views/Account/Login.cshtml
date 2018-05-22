@@ -8,10 +8,11 @@
             </p>
         </div>
         <div class="col-md-4">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "FormCreate", @class = "form-horizontal" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary()
+                @Html.HiddenFor(m => m.ReturnUrl)
 
                 <fieldset>
                     <legend>Registrater for a new account</legend>
