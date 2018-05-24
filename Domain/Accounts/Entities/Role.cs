@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Accounts
 {
-    public class Role
+    public class Role : IRole
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

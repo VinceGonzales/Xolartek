@@ -55,6 +55,8 @@
     <Compile Include="Accounts\Context\AccountContext.cs" />
     <Compile Include="Accounts\Context\AccountContextInitializer.cs" />
     <Compile Include="Accounts\Context\IAccountDb.cs" />
+    <Compile Include="Accounts\Entities\IRole.cs" />
+    <Compile Include="Accounts\Entities\IUser.cs" />
     <Compile Include="Accounts\Entities\Role.cs" />
     <Compile Include="Accounts\Entities\User.cs" />
     <Compile Include="Accounts\XMembershipProvider.cs" />
