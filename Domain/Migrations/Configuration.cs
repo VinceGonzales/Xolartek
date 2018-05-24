@@ -6,14 +6,14 @@ namespace Domain.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Domain.Accounts.AccountContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Domain.Accounts.AccountDb>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Domain.Accounts.AccountContext context)
+        protected override void Seed(Domain.Accounts.AccountDb context)
         {
             if (context.Database.Exists())
             {
@@ -37,8 +37,12 @@ namespace Domain.Migrations
 
                 context.Users.AddOrUpdate(u => u.Username, user);
 
+                context.SaveChanges();
+
                 context.Roles.FirstOrDefault(r => r.RoleName.Equals("Administrator")).Users
                     .Add(context.Users.FirstOrDefault(r => r.Username.Equals("Admin")));
+
+                context.SaveChanges();
             }
         }
     }

@@ -86,7 +86,7 @@ namespace Domain.Accounts
                 return null;
             }
 
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 if (Context.Users.Where(Usr => Usr.Username == username).Any())
                 {
@@ -143,7 +143,7 @@ namespace Domain.Accounts
             {
                 return false;
             }
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username || Usr.Email == username);
@@ -200,7 +200,7 @@ namespace Domain.Accounts
             {
                 return null;
             }
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username || Usr.Email == username);
@@ -228,7 +228,7 @@ namespace Domain.Accounts
                 return null;
             }
 
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 User User = null;
                 User = Context.Users.Find(providerUserKey);
@@ -262,7 +262,7 @@ namespace Domain.Accounts
             {
                 return false;
             }
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
@@ -307,7 +307,7 @@ namespace Domain.Accounts
 
         public override bool UnlockUser(string userName)
         {
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == userName);
@@ -328,7 +328,7 @@ namespace Domain.Accounts
         public override int GetNumberOfUsersOnline()
         {
             DateTime DateActive = DateTime.UtcNow.Subtract(TimeSpan.FromMinutes(Convert.ToDouble(Membership.UserIsOnlineTimeWindow)));
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 return Context.Users.Where(Usr => Usr.LastActivityDate > DateActive).Count();
             }
@@ -340,7 +340,7 @@ namespace Domain.Accounts
             {
                 return false;
             }
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
@@ -359,7 +359,7 @@ namespace Domain.Accounts
 
         public override string GetUserNameByEmail(string email)
         {
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Email == email);
@@ -377,7 +377,7 @@ namespace Domain.Accounts
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
             MembershipUserCollection MembershipUsers = new MembershipUserCollection();
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 totalRecords = Context.Users.Where(Usr => Usr.Email == emailToMatch).Count();
                 IQueryable<User> Users = Context.Users.Where(Usr => Usr.Email == emailToMatch).OrderBy(Usrn => Usrn.Username).Skip(pageIndex * pageSize).Take(pageSize);
@@ -392,7 +392,7 @@ namespace Domain.Accounts
         public override MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
             MembershipUserCollection MembershipUsers = new MembershipUserCollection();
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 totalRecords = Context.Users.Where(Usr => Usr.Username == usernameToMatch).Count();
                 IQueryable<User> Users = Context.Users.Where(Usr => Usr.Username == usernameToMatch).OrderBy(Usrn => Usrn.Username).Skip(pageIndex * pageSize).Take(pageSize);
@@ -407,7 +407,7 @@ namespace Domain.Accounts
         public override MembershipUserCollection GetAllUsers(int pageIndex, int pageSize, out int totalRecords)
         {
             MembershipUserCollection MembershipUsers = new MembershipUserCollection();
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 totalRecords = Context.Users.Count();
                 IQueryable<User> Users = Context.Users.OrderBy(Usrn => Usrn.Username).Skip(pageIndex * pageSize).Take(pageSize);

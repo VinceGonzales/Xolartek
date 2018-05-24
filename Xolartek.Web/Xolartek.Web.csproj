@@ -142,6 +142,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -149,9 +150,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Domain.Accounts.AccountContext.mdf" />
-    <Content Include="App_Data\Domain.Accounts.AccountContext_log.ldf">
-      <DependentUpon>Domain.Accounts.AccountContext.mdf</DependentUpon>
+    <Content Include="App_Data\Domain.Accounts.AccountDb.mdf" />
+    <Content Include="App_Data\Domain.Accounts.AccountDb_log.ldf">
+      <DependentUpon>Domain.Accounts.AccountDb.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />

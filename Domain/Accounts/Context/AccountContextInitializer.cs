@@ -7,17 +7,17 @@ using System.Web.Security;
 
 namespace Domain.Accounts
 {
-    public class AccountContextInitializer : IDatabaseInitializer<AccountContext>
+    public class AccountContextInitializer : IDatabaseInitializer<AccountDb>
     {
         public delegate void CompleteHandler(bool isEmpty);
         public event CompleteHandler Complete;
 
-        private void Seed(AccountContext context)
+        private void Seed(AccountDb context)
         {
 
         }
 
-        public void InitializeDatabase(AccountContext context)
+        public void InitializeDatabase(AccountDb context)
         {
             //context.Database.Delete();
             if (context.Database.Exists())

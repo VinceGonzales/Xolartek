@@ -26,7 +26,7 @@ namespace Domain.Accounts
             {
                 return false;
             }
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 Role Role = null;
                 Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
@@ -51,7 +51,7 @@ namespace Domain.Accounts
             {
                 return false;
             }
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
@@ -70,7 +70,7 @@ namespace Domain.Accounts
 
         public override string[] GetAllRoles()
         {
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 return Context.Roles.Select(Rl => Rl.RoleName).ToArray();
             }
@@ -82,7 +82,7 @@ namespace Domain.Accounts
             {
                 return null;
             }
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 Role Role = null;
                 Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
@@ -103,7 +103,7 @@ namespace Domain.Accounts
             {
                 return null;
             }
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
@@ -130,7 +130,7 @@ namespace Domain.Accounts
                 return null;
             }
 
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
 
                 return (from Rl in Context.Roles from Usr in Rl.Users where Rl.RoleName == roleName && Usr.Username.Contains(usernameToMatch) select Usr.Username).ToArray();
@@ -141,7 +141,7 @@ namespace Domain.Accounts
         {
             if (!string.IsNullOrEmpty(roleName))
             {
-                using (AccountContext Context = new AccountContext())
+                using (AccountDb Context = new AccountDb())
                 {
                     Role Role = null;
                     Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
@@ -165,7 +165,7 @@ namespace Domain.Accounts
             {
                 return false;
             }
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 Role Role = null;
                 Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
@@ -192,7 +192,7 @@ namespace Domain.Accounts
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 List<User> Users = Context.Users.Where(Usr => usernames.Contains(Usr.Username)).ToList();
                 List<Role> Roles = Context.Roles.Where(Rl => roleNames.Contains(Rl.RoleName)).ToList();
@@ -212,7 +212,7 @@ namespace Domain.Accounts
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
         {
-            using (AccountContext Context = new AccountContext())
+            using (AccountDb Context = new AccountDb())
             {
                 foreach (String username in usernames)
                 {

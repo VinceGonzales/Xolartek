@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace Domain.Accounts
 {
-    public class AccountContext : DbContext, IAccountDb
+    public class AccountDb : DbContext, IAccountDb
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
