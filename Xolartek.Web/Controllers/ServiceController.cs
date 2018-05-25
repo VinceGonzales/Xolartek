@@ -28,6 +28,18 @@ namespace Xolartek.Web.Controllers
             return "value";
         }
 
+        public string Get(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                return db.Users.Where(u => u.UserId.Equals(id)).FirstOrDefault().Username;
+            }
+            else
+            {
+                return "invalid id";
+            }
+        }
+
         public string Post([FromBody]string value)
         {
             return value;
