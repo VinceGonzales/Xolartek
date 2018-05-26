@@ -1,18 +1,16 @@
 ﻿using Domain.Accounts;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Xolartek.Web.Models
 {
     public class Repository : IAccountDb
     {
-        private AccountDb db;
+        private IAccountDb db;
 
-        public Repository()
+        public Repository(IAccountDb ctx)
         {
-            db = new AccountDb();
+            db = ctx;
         }
 
         public IQueryable<User> Users

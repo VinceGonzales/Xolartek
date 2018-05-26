@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Domain.Accounts;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Xolartek.Web.Models;
 
@@ -12,9 +10,9 @@ namespace Xolartek.Web.Controllers
     {
         private Repository db;
 
-        public AdminController()
+        public AdminController(IAccountDb ctx)
         {
-            db = new Repository();
+            db = new Repository(ctx);
         }
 
         public ActionResult Index()
