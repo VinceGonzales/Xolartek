@@ -61,7 +61,26 @@
     <Compile Include="Accounts\Entities\User.cs" />
     <Compile Include="Accounts\XMembershipProvider.cs" />
     <Compile Include="Accounts\XRoleProvider.cs" />
+    <Compile Include="Entities\Picture.cs" />
+    <Compile Include="Fortnite\Context\FortniteDb.cs" />
+    <Compile Include="Fortnite\Context\IFortniteDb.cs" />
+    <Compile Include="Fortnite\Entities\IMaterial.cs" />
+    <Compile Include="Fortnite\Entities\IMaterialCost.cs" />
+    <Compile Include="Fortnite\Entities\ISchematic.cs" />
+    <Compile Include="Fortnite\Entities\ITrait.cs" />
+    <Compile Include="Fortnite\Entities\ITraitImpact.cs" />
+    <Compile Include="Fortnite\Entities\IWeaponMelee.cs" />
+    <Compile Include="Fortnite\Entities\IWeaponRange.cs" />
+    <Compile Include="Fortnite\Entities\IWeaponTrap.cs" />
+    <Compile Include="Fortnite\Entities\Material.cs" />
+    <Compile Include="Fortnite\Entities\MaterialCost.cs" />
+    <Compile Include="Fortnite\Entities\Trait.cs" />
+    <Compile Include="Fortnite\Entities\TraitImpact.cs" />
+    <Compile Include="Fortnite\Entities\WeaponMelee.cs" />
+    <Compile Include="Fortnite\Entities\WeaponRange.cs" />
+    <Compile Include="Fortnite\Entities\WeaponTrap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\MainDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Crypto.cs" />
   </ItemGroup>

@@ -8,6 +8,9 @@ namespace Domain.Accounts
 {
     public class AccountDb : DbContext, IAccountDb
     {
+        public AccountDb() : base("DefaultConnectionString")
+        { }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
 
