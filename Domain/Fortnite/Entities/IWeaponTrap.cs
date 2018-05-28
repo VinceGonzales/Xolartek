@@ -18,6 +18,7 @@ namespace Domain.Fortnite
         string Impact { get; set; }
         ICollection<TraitTrap> Traits { get; set; }
         ICollection<MaterialTrap> Materials { get; set; }
+        int? PictureId { get; set; }
         Picture Picture { get; set; }
     }
 }

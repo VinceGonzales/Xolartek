@@ -76,15 +76,21 @@
     <Compile Include="Fortnite\Entities\MaterialMelee.cs" />
     <Compile Include="Fortnite\Entities\MaterialRange.cs" />
     <Compile Include="Fortnite\Entities\MaterialTrap.cs" />
+    <Compile Include="Fortnite\Entities\Rarity.cs" />
     <Compile Include="Fortnite\Entities\Trait.cs" />
     <Compile Include="Fortnite\Entities\TraitMelee.cs" />
     <Compile Include="Fortnite\Entities\TraitRange.cs" />
     <Compile Include="Fortnite\Entities\TraitTrap.cs" />
+    <Compile Include="Fortnite\Entities\WeaponEdition.cs" />
     <Compile Include="Fortnite\Entities\WeaponMelee.cs" />
     <Compile Include="Fortnite\Entities\WeaponRange.cs" />
     <Compile Include="Fortnite\Entities\WeaponTrap.cs" />
+    <Compile Include="Fortnite\Entities\WeaponType.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MainDbContext.cs" />
+    <Compile Include="Migrations\MeleeEntityConfiguration.cs" />
+    <Compile Include="Migrations\RangeEntityConfiguration.cs" />
+    <Compile Include="Migrations\TrapEntityConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Crypto.cs" />
   </ItemGroup>

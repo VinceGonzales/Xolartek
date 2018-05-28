@@ -15,6 +15,8 @@ namespace Domain.Migrations
         public DbSet<MaterialMelee> MaterialMelees { get; set; }
         public DbSet<MaterialRange> MaterialRanges { get; set; }
         public DbSet<MaterialTrap> MaterialTraps { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
+        public DbSet<Rarity> Rarities { get; set; }
         public DbSet<Trait> Traits { get; set; }
         public DbSet<TraitMelee> TraitMelees { get; set; }
         public DbSet<TraitRange> TraitRanges { get; set; }
@@ -22,5 +24,15 @@ namespace Domain.Migrations
         public DbSet<WeaponMelee> WeaponMelees { get; set; }
         public DbSet<WeaponRange> WeaponRanges { get; set; }
         public DbSet<WeaponTrap> WeaponTraps { get; set; }
+        public DbSet<WeaponType> WeaponTypes { get; set; }
+        public DbSet<WeaponEdition> WeaponEditions { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Configurations.Add(new MeleeEntityConfiguration());
+            //modelBuilder.Configurations.Add(new RangeEntityConfiguration());
+            //modelBuilder.Configurations.Add(new TrapEntityConfiguration());
+        }
     }
 }

@@ -3,15 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Fortnite
 {
-    public class Material : IMaterial
+    public class WeaponType : ITrait
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
-        [Required]
         public virtual string Description { get; set; }
-        public int? PictureId { get; set; }
-        [ForeignKey("PictureId")]
-        public virtual Picture Picture { get; set; }
     }
 }

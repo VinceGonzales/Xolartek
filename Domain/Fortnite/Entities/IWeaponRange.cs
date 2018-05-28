@@ -18,6 +18,11 @@ namespace Domain.Fortnite
         string Impact { get; set; }
         ICollection<TraitRange> Traits { get; set; }
         ICollection<MaterialRange> Materials { get; set; }
+        int? PictureId { get; set; }
         Picture Picture { get; set; }
+        int? WeaponEditionId { get; set; }
+        WeaponEdition WeaponEdition { get; set; }
+        int? WeaponTypeId { get; set; }
+        WeaponType WeaponType { get; set; }
     }
 }

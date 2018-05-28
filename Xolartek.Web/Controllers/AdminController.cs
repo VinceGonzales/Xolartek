@@ -8,11 +8,11 @@ namespace Xolartek.Web.Controllers
     [Authorize(Roles = "Administrator")]
     public class AdminController : Controller
     {
-        private Repository db;
+        private AccountRepository db;
 
         public AdminController(IAccountDb ctx)
         {
-            db = new Repository(ctx);
+            db = new AccountRepository(ctx);
         }
 
         public ActionResult Index()

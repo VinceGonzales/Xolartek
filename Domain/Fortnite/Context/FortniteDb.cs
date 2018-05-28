@@ -11,10 +11,13 @@ namespace Domain.Fortnite
         public FortniteDb() : base("DefaultConnectionString")
         { }
 
+        #region dbsets
         public DbSet<Material> Materials { get; set; }
         public DbSet<MaterialMelee> MaterialMelees { get; set; }
         public DbSet<MaterialRange> MaterialRanges { get; set; }
         public DbSet<MaterialTrap> MaterialTraps { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
+        public DbSet<Rarity> Rarities { get; set; }
         public DbSet<Trait> Traits { get; set; }
         public DbSet<TraitMelee> TraitMelees { get; set; }
         public DbSet<TraitRange> TraitRanges { get; set; }
@@ -22,7 +25,53 @@ namespace Domain.Fortnite
         public DbSet<WeaponMelee> WeaponMelees { get; set; }
         public DbSet<WeaponRange> WeaponRanges { get; set; }
         public DbSet<WeaponTrap> WeaponTraps { get; set; }
+        public DbSet<WeaponType> WeaponTypes { get; set; }
+        public DbSet<WeaponEdition> WeaponEditions { get; set; }
+        #endregion dbsets
 
+        public int PostWeaponRange(WeaponRange weapon)
+        {
+            this.WeaponRanges.Add(weapon);
+            this.SaveChanges();
+            return weapon.Id;
+        }
+
+        public int PostWeaponMelee(WeaponMelee weapon)
+        {
+            this.WeaponMelees.Add(weapon);
+            this.SaveChanges();
+            return weapon.Id;
+        }
+
+        public int PostWeaponTrap(WeaponTrap weapon)
+        {
+            this.WeaponTraps.Add(weapon);
+            this.SaveChanges();
+            return weapon.Id;
+        }
+
+        public void UpdateWeaponRange(WeaponRange weapon)
+        {
+            WeaponRange result = this.WeaponRanges.Find(weapon.Id);
+            this.Entry(result).CurrentValues.SetValues(weapon);
+            this.SaveChanges();
+        }
+
+        public void UpdateWeaponMelee(WeaponMelee weapon)
+        {
+            WeaponMelee result = this.WeaponMelees.Find(weapon.Id);
+            this.Entry(result).CurrentValues.SetValues(weapon);
+            this.SaveChanges();
+        }
+
+        public void UpdateWeaponTrap(WeaponTrap weapon)
+        {
+            WeaponTrap result = this.WeaponTraps.Find(weapon.Id);
+            this.Entry(result).CurrentValues.SetValues(weapon);
+            this.SaveChanges();
+        }
+
+        #region Queryables
         IQueryable<Material> IFortniteDb.Materials
         {
             get { return Materials; }
@@ -41,6 +90,16 @@ namespace Domain.Fortnite
         IQueryable<MaterialTrap> IFortniteDb.MaterialTraps
         {
             get { return MaterialTraps; }
+        }
+
+        IQueryable<Picture> IFortniteDb.Pictures
+        {
+            get { return Pictures; }
+        }
+
+        IQueryable<Rarity> IFortniteDb.Rarities
+        {
+            get { return Rarities; }
         }
 
         IQueryable<Trait> IFortniteDb.Traits
@@ -77,5 +136,16 @@ namespace Domain.Fortnite
         {
             get { return WeaponTraps; }
         }
+
+        IQueryable<WeaponType> IFortniteDb.WeaponTypes
+        {
+            get { return WeaponTypes; }
+        }
+
+        IQueryable<WeaponEdition> IFortniteDb.WeaponEditions
+        {
+            get { return WeaponEditions; }
+        }
+        #endregion Queryables
     }
 }

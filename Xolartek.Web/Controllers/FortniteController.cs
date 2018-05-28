@@ -1,15 +1,16 @@
-﻿using Domain.Migrations;
+﻿using Domain.Fortnite;
 using System.Web.Mvc;
+using Xolartek.Web.Models;
 
 namespace Xolartek.Web.Controllers
 {
     public class FortniteController : Controller
     {
-        private MainDbContext db;
+        private FortniteRepository db;
 
-        public FortniteController()
+        public FortniteController(IFortniteDb ctx)
         {
-            db = new MainDbContext();
+            db = new FortniteRepository(ctx);
         }
 
         public ActionResult Index()
@@ -19,7 +20,18 @@ namespace Xolartek.Web.Controllers
 
         public ActionResult Schematics()
         {
-            return View();
+            ViewModel vm = new ViewModel();
+            vm.RangedWeapons = db.GetRangedWeapons();
+            vm.MeleeWeapons = db.GetMeleeWeapons();
+            vm.TrapWeapons = db.GetTrapWeapons();
+            return View(vm);
+        }
+
+        public ActionResult Attributes()
+        {
+            ViewModel vm = new ViewModel();
+            vm.Traits = db.GetTraits();
+            return View(vm);
         }
     }
 }

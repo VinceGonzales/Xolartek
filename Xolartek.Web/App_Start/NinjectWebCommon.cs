@@ -6,6 +6,7 @@ namespace Xolartek.Web.App_Start
     using System;
     using System.Web;
     using Domain.Accounts;
+    using Domain.Fortnite;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -62,6 +63,7 @@ namespace Xolartek.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IAccountDb>().To<AccountDb>();
+            kernel.Bind<IFortniteDb>().To<FortniteDb>();
         }        
     }
 }

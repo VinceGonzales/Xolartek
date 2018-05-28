@@ -160,10 +160,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\MeleeWeapon.cs" />
+    <Compile Include="Models\RangedWeapon.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Trait.cs" />
+    <Compile Include="Models\TrapWeapon.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\UserRole.cs" />
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +183,13 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\120px-Active_powercell_icon.png" />
+    <Content Include="Content\Images\120px-Adhesive_resin_icon.png" />
+    <Content Include="Content\Images\120px-Bacon_icon.png" />
+    <Content Include="Content\Images\120px-Batteries_icon.png" />
+    <Content Include="Content\Images\120px-Blast_powder_icon.png" />
+    <Content Include="Content\Images\120px-Obsidian_ore_icon.png" />
+    <Content Include="Content\Images\120px-Sleek_mechanical_parts_icon.png" />
     <Content Include="Content\Images\T-Banners-Icons-SteelWool-L.png" />
     <Content Include="Content\Images\T-Icon-BR-SM-Athena-Campfire-L.png" />
     <Content Include="Content\Images\T-Icon-Weapons-Arctic-Sniper-L.png" />
@@ -332,6 +345,7 @@
     <Content Include="Views\Admin\Groups.cshtml" />
     <Content Include="Views\Fortnite\Index.cshtml" />
     <Content Include="Views\Fortnite\Schematics.cshtml" />
+    <Content Include="Views\Fortnite\Attributes.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

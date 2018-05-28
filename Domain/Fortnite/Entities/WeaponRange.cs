@@ -27,6 +27,15 @@ namespace Domain.Fortnite
         public virtual string Impact { get; set; }
         public virtual ICollection<TraitRange> Traits { get; set; }
         public virtual ICollection<MaterialRange> Materials { get; set; }
+        public int? PictureId { get; set; }
+        [ForeignKey("PictureId")]
         public virtual Picture Picture { get; set; }
+        public int? WeaponEditionId { get; set; }
+        [ForeignKey("WeaponEditionId")]
+        public virtual WeaponEdition WeaponEdition { get; set; }
+        public int? WeaponTypeId { get; set; }
+        [ForeignKey("WeaponTypeId")]
+        public virtual WeaponType WeaponType { get; set; }
+        public virtual Rarity Rarity { get; set; }
     }
 }
