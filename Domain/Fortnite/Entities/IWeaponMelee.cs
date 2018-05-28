@@ -16,8 +16,8 @@ namespace Domain.Fortnite
         string ReloadTime { get; set; }
         string AmmoCost { get; set; }
         string Impact { get; set; }
-        ICollection<ITrait> Traits { get; set; }
-        ICollection<IMaterialCost> Materials { get; set; }
+        ICollection<TraitMelee> Traits { get; set; }
+        ICollection<MaterialMelee> Materials { get; set; }
         Picture Picture { get; set; }
     }
 }

@@ -25,8 +25,8 @@ namespace Domain.Fortnite
         public virtual string ReloadTime { get; set; }
         public virtual string AmmoCost { get; set; }
         public virtual string Impact { get; set; }
-        public virtual ICollection<ITrait> Traits { get; set; }
-        public virtual ICollection<IMaterialCost> Materials { get; set; }
+        public virtual ICollection<TraitMelee> Traits { get; set; }
+        public virtual ICollection<MaterialMelee> Materials { get; set; }
         public virtual Picture Picture { get; set; }
     }
 }

@@ -12,9 +12,13 @@ namespace Domain.Fortnite
         { }
 
         public DbSet<Material> Materials { get; set; }
-        public DbSet<MaterialCost> MaterialCosts { get; set; }
+        public DbSet<MaterialMelee> MaterialMelees { get; set; }
+        public DbSet<MaterialRange> MaterialRanges { get; set; }
+        public DbSet<MaterialTrap> MaterialTraps { get; set; }
         public DbSet<Trait> Traits { get; set; }
-        public DbSet<TraitImpact> TraitImpacts { get; set; }
+        public DbSet<TraitMelee> TraitMelees { get; set; }
+        public DbSet<TraitRange> TraitRanges { get; set; }
+        public DbSet<TraitTrap> TraitTraps { get; set; }
         public DbSet<WeaponMelee> WeaponMelees { get; set; }
         public DbSet<WeaponRange> WeaponRanges { get; set; }
         public DbSet<WeaponTrap> WeaponTraps { get; set; }
@@ -24,9 +28,19 @@ namespace Domain.Fortnite
             get { return Materials; }
         }
 
-        IQueryable<MaterialCost> IFortniteDb.MaterialCosts
+        IQueryable<MaterialMelee> IFortniteDb.MaterialMelees
         {
-            get { return MaterialCosts; }
+            get { return MaterialMelees; }
+        }
+
+        IQueryable<MaterialRange> IFortniteDb.MaterialRanges
+        {
+            get { return MaterialRanges; }
+        }
+
+        IQueryable<MaterialTrap> IFortniteDb.MaterialTraps
+        {
+            get { return MaterialTraps; }
         }
 
         IQueryable<Trait> IFortniteDb.Traits
@@ -34,9 +48,19 @@ namespace Domain.Fortnite
             get { return Traits; }
         }
 
-        IQueryable<TraitImpact> IFortniteDb.TraitImpacts
+        IQueryable<TraitMelee> IFortniteDb.TraitMelees
         {
-            get { return TraitImpacts; }
+            get { return TraitMelees; }
+        }
+
+        IQueryable<TraitRange> IFortniteDb.TraitRanges
+        {
+            get { return TraitRanges; }
+        }
+
+        IQueryable<TraitTrap> IFortniteDb.TraitTraps
+        {
+            get { return TraitTraps; }
         }
 
         IQueryable<WeaponMelee> IFortniteDb.WeaponMelees

@@ -73,9 +73,13 @@
     <Compile Include="Fortnite\Entities\IWeaponRange.cs" />
     <Compile Include="Fortnite\Entities\IWeaponTrap.cs" />
     <Compile Include="Fortnite\Entities\Material.cs" />
-    <Compile Include="Fortnite\Entities\MaterialCost.cs" />
+    <Compile Include="Fortnite\Entities\MaterialMelee.cs" />
+    <Compile Include="Fortnite\Entities\MaterialRange.cs" />
+    <Compile Include="Fortnite\Entities\MaterialTrap.cs" />
     <Compile Include="Fortnite\Entities\Trait.cs" />
-    <Compile Include="Fortnite\Entities\TraitImpact.cs" />
+    <Compile Include="Fortnite\Entities\TraitMelee.cs" />
+    <Compile Include="Fortnite\Entities\TraitRange.cs" />
+    <Compile Include="Fortnite\Entities\TraitTrap.cs" />
     <Compile Include="Fortnite\Entities\WeaponMelee.cs" />
     <Compile Include="Fortnite\Entities\WeaponRange.cs" />
     <Compile Include="Fortnite\Entities\WeaponTrap.cs" />
