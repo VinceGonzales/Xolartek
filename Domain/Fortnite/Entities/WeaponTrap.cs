@@ -23,7 +23,6 @@ namespace Domain.Fortnite
         public virtual string Range { get; set; }
         public virtual string DurabilityPerUse { get; set; }
         public virtual string ReloadTime { get; set; }
-        public virtual string AmmoCost { get; set; }
         public virtual string Impact { get; set; }
         public virtual ICollection<TraitTrap> Traits { get; set; }
         public virtual ICollection<MaterialTrap> Materials { get; set; }

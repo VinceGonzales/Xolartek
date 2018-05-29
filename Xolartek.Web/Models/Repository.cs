@@ -189,7 +189,6 @@ namespace Xolartek.Web.Models
                 weapon.Range = t.Range;
                 weapon.DurabilityPerUse = t.DurabilityPerUse;
                 weapon.ReloadTime = t.ReloadTime;
-                weapon.AmmoCost = t.AmmoCost;
                 weapon.Impact = t.Impact;
 
                 weapon.Picture = t.PictureId.HasValue ? t.PictureId.Value : 0;
@@ -316,7 +315,6 @@ namespace Xolartek.Web.Models
             data.Range = weapon.Range;
             data.DurabilityPerUse = weapon.DurabilityPerUse;
             data.ReloadTime = weapon.ReloadTime;
-            data.AmmoCost = weapon.AmmoCost;
             data.Impact = weapon.Impact;
             data.Picture = db.Pictures.FirstOrDefault(p => p.Id.Equals(weapon.Picture));
             data.Rarity = db.Rarities.FirstOrDefault(r => r.Id.Equals(weapon.Rarity));

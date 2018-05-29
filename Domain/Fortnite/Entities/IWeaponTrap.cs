@@ -14,7 +14,6 @@ namespace Domain.Fortnite
         string Range { get; set; }
         string DurabilityPerUse { get; set; }
         string ReloadTime { get; set; }
-        string AmmoCost { get; set; }
         string Impact { get; set; }
         ICollection<TraitTrap> Traits { get; set; }
         ICollection<MaterialTrap> Materials { get; set; }

@@ -88,6 +88,7 @@
     <Compile Include="Fortnite\Entities\WeaponType.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MainDbContext.cs" />
+    <Compile Include="Migrations\MainDbInitializer.cs" />
     <Compile Include="Migrations\MeleeEntityConfiguration.cs" />
     <Compile Include="Migrations\RangeEntityConfiguration.cs" />
     <Compile Include="Migrations\TrapEntityConfiguration.cs" />
