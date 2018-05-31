@@ -7,6 +7,9 @@ namespace Xolartek.Web.Models
 {
     public class ViewModel
     {
+        public RangedWeapon Ranged { get; set; }
+        public MeleeWeapon Melee { get; set; }
+        public TrapWeapon Trap { get; set; }
         public IList<RangedWeapon> RangedWeapons { get; set; }
         public IList<MeleeWeapon> MeleeWeapons { get; set; }
         public IList<TrapWeapon> TrapWeapons { get; set; }

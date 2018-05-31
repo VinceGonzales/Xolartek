@@ -150,11 +150,7 @@ namespace Xolartek.Web.Models
                 weapon.CritChance = m.CritChance;
                 weapon.CritDamage = m.CritDamage;
                 weapon.FireRate = m.FireRate;
-                weapon.MagazineSize = m.MagazineSize;
-                weapon.Range = m.Range;
                 weapon.DurabilityPerUse = m.DurabilityPerUse;
-                weapon.ReloadTime = m.ReloadTime;
-                weapon.AmmoCost = m.AmmoCost;
                 weapon.Impact = m.Impact;
 
                 weapon.Picture = m.PictureId.HasValue ? m.PictureId.Value : 0;
@@ -185,7 +181,6 @@ namespace Xolartek.Web.Models
                 weapon.CritChance = t.CritChance;
                 weapon.CritDamage = t.CritDamage;
                 weapon.FireRate = t.FireRate;
-                weapon.MagazineSize = t.MagazineSize;
                 weapon.Range = t.Range;
                 weapon.DurabilityPerUse = t.DurabilityPerUse;
                 weapon.ReloadTime = t.ReloadTime;
@@ -269,11 +264,7 @@ namespace Xolartek.Web.Models
             data.CritChance = weapon.CritChance;
             data.CritDamage = weapon.CritDamage;
             data.FireRate = weapon.FireRate;
-            data.MagazineSize = weapon.MagazineSize;
-            data.Range = weapon.Range;
             data.DurabilityPerUse = weapon.DurabilityPerUse;
-            data.ReloadTime = weapon.ReloadTime;
-            data.AmmoCost = weapon.AmmoCost;
             data.Impact = weapon.Impact;
             data.Picture = db.Pictures.FirstOrDefault(p => p.Id.Equals(weapon.Picture));
             data.Rarity = db.Rarities.FirstOrDefault(r => r.Id.Equals(weapon.Rarity));
@@ -311,7 +302,6 @@ namespace Xolartek.Web.Models
             data.CritChance = weapon.CritChance;
             data.CritDamage = weapon.CritDamage;
             data.FireRate = weapon.FireRate;
-            data.MagazineSize = weapon.MagazineSize;
             data.Range = weapon.Range;
             data.DurabilityPerUse = weapon.DurabilityPerUse;
             data.ReloadTime = weapon.ReloadTime;

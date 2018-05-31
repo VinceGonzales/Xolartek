@@ -33,5 +33,16 @@ namespace Xolartek.Web.Controllers
             vm.Traits = db.GetTraits();
             return View(vm);
         }
+
+        public ActionResult Range()
+        {
+            ViewModel viewmodel = new ViewModel();
+            return View(viewmodel);
+        }
+
+        public ActionResult Schematic()
+        {
+            return View();
+        }
     }
 }

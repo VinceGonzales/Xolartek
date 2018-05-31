@@ -87,7 +87,7 @@ namespace Domain.Migrations
                 );
 
                 context.WeaponTypes.AddOrUpdate(t => t.Description,
-                    new Fortnite.WeaponType() { Description = "Assault Weapon" },
+                    new Fortnite.WeaponType() { Description = "Assault Rifle" },
                     new Fortnite.WeaponType() { Description = "Shotgun" }
                 );
 

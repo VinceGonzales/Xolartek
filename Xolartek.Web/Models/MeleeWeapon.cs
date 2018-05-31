@@ -14,11 +14,7 @@ namespace Xolartek.Web.Models
         public string CritChance { get; set; }
         public string CritDamage { get; set; }
         public string FireRate { get; set; }
-        public string MagazineSize { get; set; }
-        public string Range { get; set; }
         public string DurabilityPerUse { get; set; }
-        public string ReloadTime { get; set; }
-        public string AmmoCost { get; set; }
         public string Impact { get; set; }
         public int Picture { get; set; }
         public int WeaponEdition { get; set; }

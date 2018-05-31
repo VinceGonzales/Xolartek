@@ -1,0 +1,17 @@
+﻿@model.Xolartek.Web.Models.ViewModel
+@{
+    ViewBag.Title = "Input Weapon";
+}
+@section scripts {
+    <script>
+        $(function () {
+            //
+        });
+    </script>
+}
+@using (Html.BeginForm("CreateRange", "Fortnite", FormMethod.Post, new { id = "FormCreate", role = "form", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+}

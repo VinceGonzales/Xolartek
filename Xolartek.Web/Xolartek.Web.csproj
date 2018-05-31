@@ -346,6 +346,8 @@
     <Content Include="Views\Fortnite\Index.cshtml" />
     <Content Include="Views\Fortnite\Schematics.cshtml" />
     <Content Include="Views\Fortnite\Attributes.cshtml" />
+    <Content Include="Views\Fortnite\Range.cshtml" />
+    <Content Include="Views\Fortnite\Schematic.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

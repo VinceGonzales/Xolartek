@@ -10,11 +10,11 @@ namespace Domain.Fortnite
         string CritChance { get; set; }
         string CritDamage { get; set; }
         string FireRate { get; set; }
-        string MagazineSize { get; set; }
+        int MagazineSize { get; set; }
         string Range { get; set; }
         string DurabilityPerUse { get; set; }
         string ReloadTime { get; set; }
-        string AmmoCost { get; set; }
+        int AmmoCost { get; set; }
         string Impact { get; set; }
         ICollection<TraitRange> Traits { get; set; }
         ICollection<MaterialRange> Materials { get; set; }

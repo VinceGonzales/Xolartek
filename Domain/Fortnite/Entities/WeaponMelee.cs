@@ -10,20 +10,23 @@ namespace Domain.Fortnite
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
         [Required]
+        [StringLength(100)]
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
         public virtual int Durability { get; set; }
         public virtual int Level { get; set; }
         public virtual int Stars { get; set; }
+        [StringLength(100)]
         public virtual string Damage { get; set; }
+        [StringLength(100)]
         public virtual string CritChance { get; set; }
+        [StringLength(100)]
         public virtual string CritDamage { get; set; }
+        [StringLength(100)]
         public virtual string FireRate { get; set; }
-        public virtual string MagazineSize { get; set; }
-        public virtual string Range { get; set; }
+        [StringLength(100)]
         public virtual string DurabilityPerUse { get; set; }
-        public virtual string ReloadTime { get; set; }
-        public virtual string AmmoCost { get; set; }
+        [StringLength(100)]
         public virtual string Impact { get; set; }
         public virtual ICollection<TraitMelee> Traits { get; set; }
         public virtual ICollection<MaterialMelee> Materials { get; set; }
@@ -36,6 +39,8 @@ namespace Domain.Fortnite
         public int? WeaponTypeId { get; set; }
         [ForeignKey("WeaponTypeId")]
         public virtual WeaponType WeaponType { get; set; }
+        public int RarityId { get; set; }
+        [ForeignKey("RarityId")]
         public virtual Rarity Rarity { get; set; }
     }
 }
