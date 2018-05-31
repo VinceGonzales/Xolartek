@@ -1,4 +1,5 @@
-﻿using Domain.Accounts;
+﻿using Domain;
+using Domain.Accounts;
 using Domain.Fortnite;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,7 +91,7 @@ namespace Xolartek.Web.Models
                 weapon.AmmoCost = w.AmmoCost;
                 weapon.Impact = w.Impact;
 
-                weapon.Picture = w.PictureId.HasValue ? w.PictureId.Value : 0;
+                weapon.Picture = w.PictureId.HasValue ? w.Picture.Source : "";
                 weapon.WeaponEdition = w.WeaponEditionId.HasValue ? w.WeaponEditionId.Value : 0;
                 weapon.WeaponType = w.WeaponTypeId.HasValue ? w.WeaponTypeId.Value : 0;
                 weapon.Rarity = w.Rarity.Id;
@@ -124,7 +125,7 @@ namespace Xolartek.Web.Models
                 result.ReloadTime = weapon.ReloadTime;
                 result.AmmoCost = weapon.AmmoCost;
                 result.Impact = weapon.Impact;
-                result.Picture = weapon.PictureId.HasValue ? weapon.PictureId.Value : 0;
+                result.Picture = weapon.PictureId.HasValue ? weapon.Picture.Source : "";
                 result.WeaponEdition = weapon.WeaponEditionId.HasValue ? weapon.WeaponEditionId.Value : 0;
                 result.WeaponType = weapon.WeaponTypeId.HasValue ? weapon.WeaponTypeId.Value : 0;
                 result.Rarity = weapon.Rarity.Id;
@@ -210,6 +211,48 @@ namespace Xolartek.Web.Models
             return result;
         }
 
+        public IList<Trait> GetRarities()
+        {
+            List<Trait> result = new List<Trait>();
+            foreach (Domain.Fortnite.Rarity t in db.Rarities)
+            {
+                Trait trait = new Trait();
+                trait.Id = t.Id;
+                trait.Description = t.Description;
+
+                result.Add(trait);
+            }
+            return result;
+        }
+
+        public IList<Trait> GetTypes()
+        {
+            List<Trait> result = new List<Trait>();
+            foreach (Domain.Fortnite.WeaponType t in db.WeaponTypes)
+            {
+                Trait trait = new Trait();
+                trait.Id = t.Id;
+                trait.Description = t.Description;
+
+                result.Add(trait);
+            }
+            return result;
+        }
+
+        public IList<Trait> GetEditions()
+        {
+            List<Trait> result = new List<Trait>();
+            foreach (Domain.Fortnite.WeaponEdition e in db.WeaponEditions)
+            {
+                Trait trait = new Trait();
+                trait.Id = e.Id;
+                trait.Description = e.Description;
+
+                result.Add(trait);
+            }
+            return result;
+        }
+
         public RangedWeapon PostRangedWeapon(RangedWeapon weapon)
         {
             WeaponRange data = new WeaponRange();
@@ -228,11 +271,21 @@ namespace Xolartek.Web.Models
             data.ReloadTime = weapon.ReloadTime;
             data.AmmoCost = weapon.AmmoCost;
             data.Impact = weapon.Impact;
-            data.Picture = db.Pictures.FirstOrDefault(p => p.Id.Equals(weapon.Picture));
             data.Rarity = db.Rarities.FirstOrDefault(r => r.Id.Equals(weapon.Rarity));
             data.WeaponEdition = db.WeaponEditions.FirstOrDefault(e => e.Id.Equals(weapon.WeaponEdition));
             data.WeaponType = db.WeaponTypes.FirstOrDefault(t => t.Id.Equals(weapon.WeaponType));
 
+            Domain.Picture pict = db.Pictures.FirstOrDefault(p => p.Alternate.Equals(weapon.Name));
+            if(pict != null)
+            {
+                data.Picture = pict;
+            }
+            else
+            {
+                pict = new Picture() { Source = weapon.Picture, CSSClass = "img-fluid", Alternate = weapon.Name };
+                data.Picture = pict;
+            }
+            
             data.Traits = new List<TraitRange>();
             foreach(int id in weapon.Traits)
             {

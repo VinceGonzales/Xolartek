@@ -1,4 +1,4 @@
-﻿@model.Xolartek.Web.Models.ViewModel
+﻿@model Xolartek.Web.Models.ViewModel
 @{
     ViewBag.Title = "Input Weapon";
 }
@@ -9,9 +9,120 @@
         });
     </script>
 }
-@using (Html.BeginForm("CreateRange", "Fortnite", FormMethod.Post, new { id = "FormCreate", role = "form", @class = "form-horizontal" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    
-}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>New Ranged Weapon Form</h3><hr/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @using (Html.BeginForm("CreateRange", "Fortnite", FormMethod.Post, new { id = "FormCreate", role = "form", @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Ranged.Name, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Ranged.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Ranged.Name)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Ranged.Description, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(model => model.Ranged.Description, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.Level, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.Level, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.Stars, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.Stars, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.Damage, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.Damage, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.FireRate, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.FireRate, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.CritChance, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.CritChance, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.CritDamage, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.CritDamage, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.MagazineSize, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.MagazineSize, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.Range, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.Range, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.ReloadTime, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.ReloadTime, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.Durability, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.Durability, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.DurabilityPerUse, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.DurabilityPerUse, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.AmmoCost, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.AmmoCost, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.Impact, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.Impact, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.WeaponEdition, new { @class = "label" })
+                        @Html.DropDownListFor(model => model.Ranged.WeaponEdition, Model.WeaponEdition, "- Select Edition -", new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.WeaponType, new { @class = "label" })
+                        @Html.DropDownListFor(model => model.Ranged.WeaponType, Model.WeaponTypes, "- Select Type -", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.Picture, new { @class = "label" })
+                        @Html.TextBoxFor(model => model.Ranged.Picture, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(model => model.Ranged.Rarity, new { @class = "label" })
+                        @Html.DropDownListFor(model => model.Ranged.Rarity, Model.Rarities, "- Select Rarity -", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"><hr/></div>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

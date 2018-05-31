@@ -1,5 +1,6 @@
-﻿@using Xolartek.Web.Models;
-@model ViewModel
+﻿@using System.Collections.Generic;
+@using Xolartek.Web.Models;
+@model IList<Trait>
 @section header {
 
 }
@@ -20,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (Trait trait in Model.Traits)
+                    @foreach (Trait trait in Model.ToList())
                     {
                         <tr>
                             <td> - </td>
