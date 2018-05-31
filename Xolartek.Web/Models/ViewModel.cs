@@ -16,7 +16,7 @@ namespace Xolartek.Web.Models
         public IList<TrapWeapon> TrapWeapons { get; set; }
         public IEnumerable<SelectListItem> Traits { get; set; }
         public IList<TraitImpact> WeaponTraits { get; set; }
-        public IEnumerable<SelectListItem> Materials { get; set; }
+        public IList<Material> Materials { get; set; }
         public IList<MaterialCost> MaterialCosts { get; set; }
         public IEnumerable<SelectListItem> Rarities { get; set; }
         public IEnumerable<SelectListItem> WeaponTypes { get; set; }

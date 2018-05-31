@@ -9,6 +9,7 @@ namespace Xolartek.Web.Models
     {
         public int Id { get; set; }
         public string Description { get; set; }
+        public string PictureSource { get; set; }
     }
     public class MaterialCost : Material
     {
