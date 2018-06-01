@@ -1,4 +1,4 @@
-﻿using Domain.Accounts;
+﻿using Domain.Fortnite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +10,17 @@ namespace Xolartek.Web.Controllers
 {
     public class ServiceController : ApiController
     {
-        private AccountDb db;
+        private FortniteDb db;
 
-        public ServiceController()
+        public ServiceController(IFortniteDb ctx)
         {
-            db = new AccountDb();
+            db = new FortniteDb();
             db.Configuration.ProxyCreationEnabled = false;
         }
 
-        public IEnumerable<string> Get()
+        public IEnumerable<WeaponRange> Get()
         {
-            return db.Users.Select(u => u.Username).ToList();
+            return db.WeaponRanges.ToList();
         }
 
         public string Get(int id)
@@ -30,14 +30,7 @@ namespace Xolartek.Web.Controllers
 
         public string Get(string id)
         {
-            if (!string.IsNullOrEmpty(id))
-            {
-                return db.Users.Where(u => u.UserId.Equals(id)).FirstOrDefault().Username;
-            }
-            else
-            {
-                return "invalid id";
-            }
+            return "invalid id";
         }
 
         public string Post([FromBody]string value)

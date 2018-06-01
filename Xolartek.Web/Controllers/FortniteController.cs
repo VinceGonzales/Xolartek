@@ -37,32 +37,24 @@ namespace Xolartek.Web.Controllers
             return View(vm);
         }
 
-        public ActionResult Range()
-        {
-            ViewModel viewmodel = new ViewModel();
-            viewmodel.Rarities = db.GetRarities().Select(r => new SelectListItem
-            {
-                Value = r.Id.ToString(),
-                Text = r.Description
-            });
-            viewmodel.WeaponTypes = db.GetTypes().Select(r => new SelectListItem
-            {
-                Value = r.Id.ToString(),
-                Text = r.Description
-            });
-            viewmodel.WeaponEdition = db.GetEditions().Select(r => new SelectListItem
-            {
-                Value = r.Id.ToString(),
-                Text = r.Description
-            });
-
-            return View(viewmodel);
-        }
-
         public ActionResult Schematic()
         {
-            ViewModel viewmodel = new ViewModel();
-            return View(viewmodel);
+            ViewBag.Rarities = db.GetRarities().Select(r => new SelectListItem
+            {
+                Value = r.Id.ToString(),
+                Text = r.Description
+            });
+            ViewBag.WeaponTypes = db.GetTypes().Select(r => new SelectListItem
+            {
+                Value = r.Id.ToString(),
+                Text = r.Description
+            });
+            ViewBag.WeaponEdition = db.GetEditions().Select(r => new SelectListItem
+            {
+                Value = r.Id.ToString(),
+                Text = r.Description
+            });
+            return View();
         }
 
         [HttpPost]

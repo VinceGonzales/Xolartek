@@ -14,8 +14,8 @@
     </RootPath>
     <RootNamespace>Xolartek.Data</RootNamespace>
     <AssemblyName>Xolartek.Data</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
-    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetLanguage>CS</TargetLanguage>
@@ -23,6 +23,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -58,10 +60,43 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Scripts" />
+    <Folder Include="Tables\" />
+    <Folder Include="Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\RenameMDF.sql" />
     <None Include="Scripts\Users.sql" />
     <None Include="Scripts\AutomaticMigration.sql" />
+    <None Include="Scripts\EnableCRLIntegration.sql" />
+    <None Include="Scripts\Test1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\MaterialMelees.sql" />
+    <Build Include="Tables\Materials.sql" />
+    <Build Include="Tables\Pictures.sql" />
+    <Build Include="Tables\WeaponMelees.sql" />
+    <Build Include="Tables\Rarities.sql" />
+    <Build Include="Tables\TraitMelees.sql" />
+    <Build Include="Tables\Traits.sql" />
+    <Build Include="Tables\WeaponEditions.sql" />
+    <Build Include="Tables\WeaponTypes.sql" />
+    <Build Include="Tables\MaterialRanges.sql" />
+    <Build Include="Tables\WeaponRanges.sql" />
+    <Build Include="Tables\TraitRanges.sql" />
+    <Build Include="Tables\MaterialTraps.sql" />
+    <Build Include="Tables\WeaponTraps.sql" />
+    <Build Include="Tables\TraitTraps.sql" />
+    <Build Include="Tables\Roles.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="Tables\UserRoles.sql" />
+    <Build Include="Tables\__MigrationHistory.sql" />
+    <Build Include="Stored Procedures\InsertWeaponRange.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Scripts\InsertWeaponTraits.cs" />
   </ItemGroup>
 </Project>
