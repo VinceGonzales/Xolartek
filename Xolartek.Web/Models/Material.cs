@@ -13,6 +13,12 @@ namespace Xolartek.Web.Models
     }
     public class MaterialCost : Material
     {
+        public MaterialCost(int id, string desc, int cost)
+        {
+            base.Id = id;
+            base.Description = desc;
+            this.Cost = cost;
+        }
         public int Cost { get; set; }
     }
 }

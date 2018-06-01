@@ -95,8 +95,8 @@ namespace Xolartek.Web.Models
                 weapon.WeaponEdition = w.WeaponEditionId.HasValue ? w.WeaponEditionId.Value : 0;
                 weapon.WeaponType = w.WeaponTypeId.HasValue ? w.WeaponTypeId.Value : 0;
                 weapon.Rarity = w.Rarity.Id;
-                weapon.Traits = w.Traits.Select(t => t.Id).ToList();
-                weapon.Materials = w.Materials.Select(m => m.Id).ToList();
+                weapon.Traits = w.Traits.Select(t => new TraitImpact(t.Id, t.Trait.Description, t.Impact)).ToList();
+                weapon.Materials = w.Materials.Select(m => new MaterialCost(m.Id, m.Material.Description, m.Cost)).ToList();
 
                 result.Add(weapon);
             }
@@ -129,8 +129,8 @@ namespace Xolartek.Web.Models
                 result.WeaponEdition = weapon.WeaponEditionId.HasValue ? weapon.WeaponEditionId.Value : 0;
                 result.WeaponType = weapon.WeaponTypeId.HasValue ? weapon.WeaponTypeId.Value : 0;
                 result.Rarity = weapon.Rarity.Id;
-                result.Traits = weapon.Traits.Select(t => t.Id).ToList();
-                result.Materials = weapon.Materials.Select(m => m.Id).ToList();
+                result.Traits = weapon.Traits.Select(t => new TraitImpact(t.Id, t.Trait.Description, t.Impact)).ToList();
+                result.Materials = weapon.Materials.Select(m => new MaterialCost(m.Id, m.Material.Description, m.Cost)).ToList();
             }
             return result;
         }
@@ -287,14 +287,14 @@ namespace Xolartek.Web.Models
             }
             
             data.Traits = new List<TraitRange>();
-            foreach(int id in weapon.Traits)
+            foreach(TraitImpact ti in weapon.Traits)
             {
-                TraitRange trait = db.TraitRanges.FirstOrDefault(t => t.Id.Equals(id));
+                TraitRange trait = db.TraitRanges.FirstOrDefault(t => t.Id.Equals(ti.Id));
                 data.Traits.Add(trait);
             }
 
             data.Materials = new List<MaterialRange>();
-            foreach(int id in weapon.Materials)
+            foreach(MaterialCost id in weapon.Materials)
             {
                 MaterialRange mat = db.MaterialRanges.FirstOrDefault(m => m.Id.Equals(id));
                 data.Materials.Add(mat);

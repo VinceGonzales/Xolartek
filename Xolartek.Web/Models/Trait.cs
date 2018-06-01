@@ -12,6 +12,12 @@ namespace Xolartek.Web.Models
     }
     public class TraitImpact : Trait
     {
+        public TraitImpact(int id, string desc, string imp)
+        {
+            base.Id = id;
+            base.Description = desc;
+            this.Impact = imp;
+        }
         string Impact { get; set; }
     }
 }
