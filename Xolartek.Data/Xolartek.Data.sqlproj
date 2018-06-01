@@ -65,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Users.sql" />
-    <None Include="Scripts\AutomaticMigration.sql" />
     <None Include="Scripts\EnableCRLIntegration.sql" />
     <None Include="Scripts\Test1.sql" />
   </ItemGroup>

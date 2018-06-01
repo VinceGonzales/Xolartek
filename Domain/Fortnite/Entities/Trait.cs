@@ -9,6 +9,7 @@ namespace Domain.Fortnite
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
         [Required]
+        [StringLength(100)]
         public virtual string Description { get; set; }
     }
 }

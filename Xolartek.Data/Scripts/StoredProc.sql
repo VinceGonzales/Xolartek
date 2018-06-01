@@ -1,5 +1,6 @@
 USE [XolartekDb]
 GO
+-------------------------------------------------------------- SP InsertWeaponRange
 CREATE PROCEDURE InsertWeaponRange
 @Name NVARCHAR(100),
 @Description NVARCHAR(MAX),
@@ -61,4 +62,44 @@ INSERT INTO [dbo].[WeaponRanges]
 ([Name],[Description],[Durability],[Level],[Stars],[Damage],[CritChance],[CritDamage],[FireRate],[MagazineSize],[Range],[DurabilityPerUse],[ReloadTime],[AmmoCost],[Impact],[PictureId],[WeaponEditionId],[WeaponTypeId],[RarityId])
 VALUES
 (@Name,@Description,@Durability,@WeaponLevel,@Stars,@Damage,@CritChance,@CritDamage,@FireRate,@MagazineSize,@WeaponRange,@DurabilityPerUse,@ReloadTime,@AmmoCost,@Impact,@pictId,@weapEditionId,@weapTypeId,@rareId)
+GO
+-------------------------------------------------------------- SP InsertTraitRange
+CREATE PROCEDURE InsertTraitRange
+@Impact NVARCHAR(100),
+@WeaponId INT,
+@Trait NVARCHAR(100)
+AS
+DECLARE @TraitRangeId INT
+
+IF EXISTS( SELECT * FROM [dbo].[Traits] WHERE [Description] LIKE @Trait )
+	BEGIN
+		SET @TraitRangeId = (SELECT [Id] FROM [dbo].[Traits] WHERE [Description] LIKE @Trait)
+	END
+ELSE
+	BEGIN
+		INSERT INTO [dbo].[Traits] ([Description]) VALUES (@Trait)
+		SET @TraitRangeId = (SELECT IDENT_CURRENT('WeaponEditions'))
+	END
+
+INSERT INTO [dbo].[TraitRanges] ([Impact],[Range_Id],[Trait_Id]) VALUES (@Impact,@WeaponId,@TraitRangeId)
+GO
+-------------------------------------------------------------- SP InsertMaterialRange
+CREATE PROCEDURE InsertMaterialRange
+@Cost INT,
+@Material NVARCHAR(100),
+@WeaponId INT
+AS
+DECLARE @MaterialId INT
+
+IF EXISTS( SELECT * FROM [dbo].[Materials] WHERE [Description] LIKE @Material )
+	BEGIN
+		SET @MaterialId = (SELECT [Id] FROM [dbo].[Materials] WHERE [Description] LIKE @Material)
+	END
+ELSE
+	BEGIN
+		INSERT INTO [dbo].[Materials] ([Description]) VALUES (@Material)
+		SET @MaterialId = (SELECT IDENT_CURRENT('Materials'))
+	END
+
+INSERT INTO [dbo].[MaterialRanges] ([Cost],[Material_Id],[Range_Id]) VALUES (@Cost,@MaterialId,@WeaponId)
 GO
