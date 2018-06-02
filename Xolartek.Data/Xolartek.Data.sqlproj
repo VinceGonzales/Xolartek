@@ -67,6 +67,7 @@
     <None Include="Scripts\Users.sql" />
     <None Include="Scripts\EnableCRLIntegration.sql" />
     <None Include="Scripts\Test1.sql" />
+    <None Include="Scripts\UDFaccess.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\MaterialMelees.sql" />

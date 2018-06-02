@@ -1,7 +1,9 @@
 ﻿using Domain;
 using Domain.Accounts;
 using Domain.Fortnite;
+using Ninject.Infrastructure.Language;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Xolartek.Web.Models
@@ -66,6 +68,7 @@ namespace Xolartek.Web.Models
         public FortniteRepository(IFortniteDb ctx)
         {
             db = ctx;
+            ((DbContext)db).Configuration.ProxyCreationEnabled = false;
         }
 
         public IList<RangedWeapon> GetRangedWeapons()
@@ -197,16 +200,62 @@ namespace Xolartek.Web.Models
             return result;
         }
 
-        public IList<Trait> GetTraits()
+        public IList<Trait> GetTraits(string desc = "")
         {
             List<Trait> result = new List<Trait>();
-            foreach(Domain.Fortnite.Trait t in db.Traits)
+            if(string.IsNullOrEmpty(desc))
             {
-                Trait trait = new Trait();
-                trait.Id = t.Id;
-                trait.Description = t.Description;
+                foreach (Domain.Fortnite.Trait t in db.Traits)
+                {
+                    Trait trait = new Trait();
+                    trait.Id = t.Id;
+                    trait.Description = t.Description;
 
-                result.Add(trait);
+                    result.Add(trait);
+                }
+            }
+            else
+            {
+                string description = desc.Replace('-', ' ');
+                var traits = db.Traits.Where(m => m.Description.ToLower().Contains(description)).ToEnumerable();
+                foreach (Domain.Fortnite.Trait t in traits)
+                {
+                    Trait trait = new Trait();
+                    trait.Id = t.Id;
+                    trait.Description = t.Description;
+
+                    result.Add(trait);
+                }
+            }
+            return result;
+        }
+
+        public IList<Material> GetMaterials(string desc = "")
+        {
+            List<Material> result = new List<Material>();
+            if (string.IsNullOrEmpty(desc))
+            {
+                foreach (Domain.Fortnite.Material m in db.Materials)
+                {
+                    Material mat = new Material();
+                    mat.Id = m.Id;
+                    mat.Description = m.Description;
+
+                    result.Add(mat);
+                }
+            }
+            else
+            {
+                string description = desc.Replace('-', ' ');
+                var materials = db.Materials.Where(m => m.Description.ToLower().Contains(description)).ToEnumerable();
+                foreach (Domain.Fortnite.Material m in materials)
+                {
+                    Material mat = new Material();
+                    mat.Id = m.Id;
+                    mat.Description = m.Description;
+
+                    result.Add(mat);
+                }
             }
             return result;
         }
@@ -290,13 +339,19 @@ namespace Xolartek.Web.Models
             foreach(TraitImpact ti in weapon.Traits)
             {
                 TraitRange trait = db.TraitRanges.FirstOrDefault(t => t.Id.Equals(ti.Id));
+                if(trait == null)
+                {
+                    trait = new TraitRange();
+                    trait.Impact = ti.Impact;
+                    trait.Trait = db.Traits.FirstOrDefault(t => t.Description == ti.Description);
+                }
                 data.Traits.Add(trait);
             }
 
             data.Materials = new List<MaterialRange>();
-            foreach(MaterialCost id in weapon.Materials)
+            foreach(MaterialCost mc in weapon.Materials)
             {
-                MaterialRange mat = db.MaterialRanges.FirstOrDefault(m => m.Id.Equals(id));
+                MaterialRange mat = db.MaterialRanges.FirstOrDefault(m => m.Id.Equals(mc.Id));
                 data.Materials.Add(mat);
             }
 

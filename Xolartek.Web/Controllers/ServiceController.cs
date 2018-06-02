@@ -1,26 +1,26 @@
-﻿using Domain.Fortnite;
+﻿using Ninject.Infrastructure.Language;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Xolartek.Web.Models;
 
 namespace Xolartek.Web.Controllers
 {
     public class ServiceController : ApiController
     {
-        private FortniteDb db;
+        private FortniteRepository db;
 
-        public ServiceController(IFortniteDb ctx)
+        public ServiceController(Domain.Fortnite.IFortniteDb ctx)
         {
-            db = new FortniteDb();
-            db.Configuration.ProxyCreationEnabled = false;
+            db = new FortniteRepository(ctx);
         }
 
-        public IEnumerable<WeaponRange> Get()
+        public IList<RangedWeapon> Get()
         {
-            return db.WeaponRanges.ToList();
+            return db.GetRangedWeapons();
         }
 
         public string Get(int id)
@@ -28,9 +28,32 @@ namespace Xolartek.Web.Controllers
             return "value";
         }
 
-        public string Get(string id)
+        [Route("api/fortnite/traits/{desc}")]
+        public IList<Trait> GetTrait(string desc)
         {
-            return "invalid id";
+            IList<Trait> result = db.GetTraits(desc);
+            if (result != null)
+            {
+                return result;
+            }
+            else
+            {
+                return new List<Trait>();
+            }
+        }
+
+        [Route("api/fortnite/materials/{desc}")]
+        public IList<Material> GetMaterial(string desc)
+        {
+            IList<Material> result = db.GetMaterials(desc);
+            if (result != null)
+            {
+                return result;
+            }
+            else
+            {
+                return new List<Material>();
+            }
         }
 
         public string Post([FromBody]string value)

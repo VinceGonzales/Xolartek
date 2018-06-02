@@ -18,6 +18,6 @@ namespace Xolartek.Web.Models
             base.Description = desc;
             this.Impact = imp;
         }
-        string Impact { get; set; }
+        public string Impact { get; set; }
     }
 }
