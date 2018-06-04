@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xolartek.Web", "Xolartek.Web\Xolartek.Web.csproj", "{6649DE94-46B4-4BED-BEA1-4DEB1A0958B5}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Xolartek.Data", "Xolartek.Data\Xolartek.Data.sqlproj", "{65257E46-CA19-4E68-9EDC-56F3823051F9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,15 +26,6 @@ Global
 		{6649DE94-46B4-4BED-BEA1-4DEB1A0958B5}.Dev-snapshot|Any CPU.Build.0 = Debug|Any CPU
 		{6649DE94-46B4-4BED-BEA1-4DEB1A0958B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6649DE94-46B4-4BED-BEA1-4DEB1A0958B5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65257E46-CA19-4E68-9EDC-56F3823051F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65257E46-CA19-4E68-9EDC-56F3823051F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65257E46-CA19-4E68-9EDC-56F3823051F9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{65257E46-CA19-4E68-9EDC-56F3823051F9}.Dev-snapshot|Any CPU.ActiveCfg = Debug|Any CPU
-		{65257E46-CA19-4E68-9EDC-56F3823051F9}.Dev-snapshot|Any CPU.Build.0 = Debug|Any CPU
-		{65257E46-CA19-4E68-9EDC-56F3823051F9}.Dev-snapshot|Any CPU.Deploy.0 = Debug|Any CPU
-		{65257E46-CA19-4E68-9EDC-56F3823051F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65257E46-CA19-4E68-9EDC-56F3823051F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65257E46-CA19-4E68-9EDC-56F3823051F9}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

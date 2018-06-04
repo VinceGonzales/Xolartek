@@ -88,13 +88,11 @@
                 </div>
                 <div class="col">
                     @Html.LabelFor(model => model.WeaponEdition, new { @class = "label" })
-                    @Html.DropDownListFor(model => model.WeaponEdition, (IEnumerable
-        <SelectListItem>)ViewBag.WeaponEdition, "- Select Edition -", new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.WeaponEdition, (IEnumerable<SelectListItem>)ViewBag.WeaponEdition, "- Select Edition -", new { @class = "form-control" })
                 </div>
                 <div class="col">
                     @Html.LabelFor(model => model.WeaponType, new { @class = "label" })
-                    @Html.DropDownListFor(model => model.WeaponType, (IEnumerable
-        <SelectListItem>)ViewBag.WeaponTypes, "- Select Type -", new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.WeaponType, (IEnumerable<SelectListItem>)ViewBag.WeaponTypes, "- Select Type -", new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-row">
@@ -104,8 +102,7 @@
                 </div>
                 <div class="col">
                     @Html.LabelFor(model => model.Rarity, new { @class = "label" })
-                    @Html.DropDownListFor(model => model.Rarity, (IEnumerable  
-        <SelectListItem>)ViewBag.Rarities, "- Select Rarity -", new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.Rarity, (IEnumerable<SelectListItem>)ViewBag.Rarities, "- Select Rarity -", new { @class = "form-control" })
                 </div>
             </div>
             <div class="row">

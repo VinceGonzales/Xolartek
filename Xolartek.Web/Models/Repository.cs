@@ -68,13 +68,13 @@ namespace Xolartek.Web.Models
         public FortniteRepository(IFortniteDb ctx)
         {
             db = ctx;
-            ((DbContext)db).Configuration.ProxyCreationEnabled = false;
+            //((DbContext)db).Configuration.ProxyCreationEnabled = false;
         }
 
         public IList<RangedWeapon> GetRangedWeapons()
         {
             List<RangedWeapon> result = new List<RangedWeapon>();
-            foreach(WeaponRange w in db.WeaponRanges)
+            foreach(WeaponRange w in db.WeaponRanges.Include(r => r.Traits).Include(x => x.Materials))
             {
                 RangedWeapon weapon = new RangedWeapon();
                 weapon.Id = w.Id;
