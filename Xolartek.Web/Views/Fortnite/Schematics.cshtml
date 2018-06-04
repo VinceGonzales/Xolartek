@@ -1,145 +1,74 @@
-﻿@section header {
-
+﻿@using Xolartek.Web.Models;
+@model ViewModel
+@{
+    ViewBag.Title = "Fortnite Schematics";
+}
+@section header {
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.common-bootstrap.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.bootstrap.min.css">
+}
+@section scripts {
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.all.min.js"></script>
+    <script src="~/Scripts/fortnite/schematics.js"></script>
+    <script>
+        $(function () {
+            //
+        });
+    </script>
 }
 <div class="container">
     <div class="row">
-        <div class="col">
-            <div class="row justify-content-md-center">
-                <table class="table schematics">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Level</th>
-                            <th>Stars</th>
-                            <th>Traits</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="row-legendary" data-internal="Schematic:sid_assault_hydraulic_drum_sr_ore_t04">
-                            <td><img class="img-fluid" src="~/content/images/T-Icon-Weapons-SK-Hydraulic-Drum-Assault-L.png" alt="T icon weapons sk hydraulic drum assault l"></td>
-                            <td><a>Nailer</a></td>
-                            <td>40</td>
-                            <td class="no-wrap">
-                                <i class="material-icons">grade</i>
-                                <i class="material-icons">grade</i>
-                                <i class="material-icons">grade</i>
-                                <i class="material-icons">grade</i>
-                            </td>
-                            <td data-internal="aid_att_critchance_t01">
-                                <div class="stat">
-                                    <div class="stat__value">10.0%</div>
-                                    <div class="stat__name">+10 Critical Rating</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_att_magazinesize_t02">
-                                <div class="stat">
-                                    <div class="stat__value">38.0%</div>
-                                    <div class="stat__name"> Magazine Size</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_ele_energy_t03">
-                                <div class="stat">
-                                    <div class="stat__value">0.0%</div>
-                                    <div class="stat__name"> Damage</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_att_damage_t03">
-                                <div class="stat">
-                                    <div class="stat__value">20.0%</div>
-                                    <div class="stat__name"> Damage</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_conditional_afflicted_dmgbonus_t02">
-                                <div class="stat">
-                                    <div class="stat__value">22.5%</div>
-                                    <div class="stat__name"> Damage to afflicted targets</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_g_affliction_v2">
-                                <div class="stat">
-                                    <div class="stat__value">0.0%</div>
-                                    <div class="stat__name">Causes Affliction damage for 6 seconds.</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="row-epic" data-internal="Schematic:sid_edged_sword_heavy_vr_ore_t01">
-                            <td><img class="img-fluid" src="~/content/images/T-Icon-Weapons-SK-Sword-03-L.png" alt="T icon weapons sk sword 03 l"></td>
-                            <td><a href="">Greatsword</a></td>
-                            <td>1</td>
-                            <td class="no-wrap">
-                                <i class="material-icons">grade</i>
-                            </td>
-                            <td data-internal="aid_att_critdamage_t01">
-                                <div class="stat">
-                                    <div class="stat__value">45.0%</div>
-                                    <div class="stat__name"> Crit Damage</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_att_damageresistance_t01">
-                                <div class="stat">
-                                    <div class="stat__value">9.0%</div>
-                                    <div class="stat__name"> Damage Resistance</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_ele_fire_t02">
-                                <div class="stat">
-                                    <div class="stat__value">0.0%</div>
-                                    <div class="stat__name"> Damage</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_att_critdamage_t02">
-                                <div class="stat">
-                                    <div class="stat__value">68.0%</div>
-                                    <div class="stat__name"> Crit Damage</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_conditional_afflicted_dmgbonus_t03">
-                                <div class="stat">
-                                    <div class="stat__value">30.0%</div>
-                                    <div class="stat__name"> Damage to afflicted targets</div>
-                                </div>
-                            </td>
-                            <td data-internal="aid_g_affliction_v2">
-                                <div class="stat">
-                                    <div class="stat__value">0.0%</div>
-                                    <div class="stat__name">Causes Affliction damage for 6 seconds.</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="row-rare" data-internal="Schematic:sid_floor_hoverboard_speed_r_t01">
-                            <td><img class="img-fluid" src="~/content/images/T-Icon-Weapons-S-Speedboost-Straight-L.png" alt="T icon weapons s speedboost straight l"></td>
-                            <td><a href="">Boost Pad (Straight)</a></td>
-                            <td>1</td>
-                            <td class="no-wrap">
-                                <i class="material-icons">grade</i>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr class="row-common" data-internal="Schematic:sid_pistol_semiauto_c_ore_t00">
-                            <td><img class="img-fluid" src="~/content/images/T-Icon-Weapons-SK-Vigilante-L.png" alt="T icon weapons sk vigilante l"></td>
-                            <td><a href="">Semi-Auto Handgun</a></td>
-                            <td>1</td>
-                            <td class="no-wrap"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="col-md-8">
+            <h3>List of Schematics</h3><hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="pnlGridSchematics"></div>
         </div>
     </div>
 </div>
+
+<script type="text/x-kendo-template" id="tmplDetail">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Basic Stats:</h5>
+                <ul class="list-unstyled">
+                    <li>Damage <strong>#= damage #</strong></li>
+                    <li>Critical Hit Chance <strong>#= critChance #</strong></li>
+                    <li>Critical Hit Damage <strong>#= critDamage #</strong></li>
+                    <li>Fire Rate <strong>#= fireRate #</strong></li>
+                    <li>Magazine Size <strong>#= magazineSize #</strong></li>
+                    <li>Range <strong>#= range #</strong></li>
+                    <li>Durability <strong>#= durability #</strong></li>
+                    <li>Reload Time <strong>#= reloadTime #</strong></li>
+                    <li>Ammo Cost <strong>#= ammoCost #</strong></li>
+                    <li>Impact <strong>#= impact #</strong></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Traits:</h5>
+                <ul class="list-unstyled">
+                    <li>Element: <strong>Energy</strong> and +<strong>10%</strong> Damage</li>
+                    <li>+<strong>15%</strong> Critical Rating</li>
+                    <li>+<strong>38%</strong> Reload Speed</li>
+                    <li>+<strong>20%</strong> Damage</li>
+                    <li>+<strong>68%</strong> Critical Damage</li>
+                    <li>Headshot eliminations cause an explosion, damaging enemies within 0.5 tiles for <strong>30%</strong> weapon damage.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h5>Crafting Costs:</h5>
+                <ul class="list-inline">
+                    <li class="list-inline-item">Blast Powder 15</li>
+                    <li class="list-inline-item">Sleek Mechanical Parts 30</li>
+                    <li class="list-inline-item">Active Powercell 1</li>
+                    <li class="list-inline-item">Obsidian Ore 11</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</script>
