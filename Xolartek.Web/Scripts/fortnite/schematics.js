@@ -43,7 +43,7 @@ $(function () {
         dataSource: dsRangeWeapon,
         columns: [
             { field: "id", title: "Id", hidden: true },
-            { field: "picture", title: "-", width: 100, template: fn_TemplImg },
+            { field: "picture", title: "-", width: 90, template: fn_TemplImg },
             { field: "name", title: "Name", width: 200 },
             { field: "level", title: "Level", width: 80 },
             { field: "stars", title: "Stars", width: 80, template: fn_TemplStars },
@@ -52,7 +52,7 @@ $(function () {
         ],
         filterable: false,
         sortable: true,
-        selectable: "row"
+        detailTemplate: kendo.template($("#tmplDetail").html())
     });
 
     window.dsRangeWeapon.read();
@@ -60,7 +60,7 @@ $(function () {
 });
 
 function fn_TemplImg(item) {
-    var str = "<img class='img-fluid img-thumbnail' src ='";
+    var str = "<img class='img-fluid' src ='";
     str += item.picture.split("~")[1];
     str += "' />";
     return str;
