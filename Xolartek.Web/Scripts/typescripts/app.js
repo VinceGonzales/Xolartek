@@ -1,3 +1,8 @@
+var TraitImpact = /** @class */ (function () {
+    function TraitImpact() {
+    }
+    return TraitImpact;
+}());
 var MyClass = /** @class */ (function () {
     function MyClass() {
     }
@@ -19,5 +24,9 @@ var MyClass = /** @class */ (function () {
 window.onload = function () {
     var myClass = new MyClass();
     myClass.render("content", "Hello World!");
+    var Damage = new TraitImpact();
+    Damage.id = 1;
+    Damage.description = "Damage";
+    Damage.impact = "+20%";
 };
 //# sourceMappingURL=app.js.map

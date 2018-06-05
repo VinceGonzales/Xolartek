@@ -53,7 +53,10 @@ $(function () {
         filterable: false,
         sortable: true,
         detailTemplate: kendo.template($("#tmplDetail").html()),
-        detailInit: fn_DetailInit
+        detailInit: fn_DetailInit,
+        detailExpand: function (e) {
+            this.collapseRow(this.tbody.find(' > tr.k-master-row').not(e.masterRow));
+        }
     });
 
     window.dsRangeWeapon.read();
