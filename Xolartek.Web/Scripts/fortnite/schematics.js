@@ -52,11 +52,13 @@ $(function () {
         ],
         filterable: false,
         sortable: true,
-        detailTemplate: kendo.template($("#tmplDetail").html())
+        detailTemplate: kendo.template($("#tmplDetail").html()),
+        detailInit: fn_DetailInit
     });
 
     window.dsRangeWeapon.read();
 
+    //kendo.bind($("#FormCreate"), {});
 });
 
 function fn_TemplImg(item) {
@@ -80,4 +82,30 @@ function fn_TemplDPS(item) {
     var dmg = parseFloat(item.damage.replace(',', ''));
     str = (rate * dmg).toLocaleString('en');
     return str;
+}
+function fn_DetailInit(element) {
+    var detailRow = element.detailRow;
+    detailRow.find(".tabstrip").kendoTabStrip({
+        animation: {
+            open: { effects: "fadeIn" }
+        }
+    });
+    detailRow.find(".pnlTraits").kendoGrid({
+        dataSource: element.data.traits,
+        columns: [
+            { field: "id", title: "Id", hidden: true },
+            { field: "impact", title: " ", width: 80 },
+            { field: "description", title: "Traits", width: 200 }
+        ],
+        scrollable: false
+    });
+    detailRow.find(".pnlMaterials").kendoGrid({
+        dataSource: element.data.materials,
+        columns: [
+            { field: "id", title: "Id", hidden: true },
+            { field: "cost", title: " ", width: 80 },
+            { field: "description", title: "Materials", width: 200 }
+        ],
+        scrollable: false
+    });
 }

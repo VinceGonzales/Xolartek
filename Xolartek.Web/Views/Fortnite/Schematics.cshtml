@@ -6,6 +6,15 @@
 @section header {
     <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.common-bootstrap.min.css" />
     <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.bootstrap.min.css">
+    <style>
+        .k-detail-cell .k-tabstrip .k-content {
+            padding: 0.2em;
+        }
+        .k-detail-cell .k-tabstrip-wrapper {
+            display:inline-block;
+            width:80%;
+        }
+    </style>
 }
 @section scripts {
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.all.min.js"></script>
@@ -32,42 +41,28 @@
 <script type="text/x-kendo-template" id="tmplDetail">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
-                <h5>Basic Stats:</h5>
-                <ul class="list-unstyled">
-                    <li>Damage <strong>#= damage #</strong></li>
-                    <li>Critical Hit Chance <strong>#= critChance #</strong></li>
-                    <li>Critical Hit Damage <strong>#= critDamage #</strong></li>
-                    <li>Fire Rate <strong>#= fireRate #</strong></li>
-                    <li>Magazine Size <strong>#= magazineSize #</strong></li>
-                    <li>Range <strong>#= range #</strong></li>
-                    <li>Durability <strong>#= durability #</strong></li>
-                    <li>Reload Time <strong>#= reloadTime #</strong></li>
-                    <li>Ammo Cost <strong>#= ammoCost #</strong></li>
-                    <li>Impact <strong>#= impact #</strong></li>
+            <div class="tabstrip">
+                <ul>
+                    <li class="k-state-active">Basic Stats</li>
+                    <li>Traits</li>
+                    <li>Materials</li>
                 </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Traits:</h5>
-                <ul class="list-unstyled">
-                    <li>Element: <strong>Energy</strong> and +<strong>10%</strong> Damage</li>
-                    <li>+<strong>15%</strong> Critical Rating</li>
-                    <li>+<strong>38%</strong> Reload Speed</li>
-                    <li>+<strong>20%</strong> Damage</li>
-                    <li>+<strong>68%</strong> Critical Damage</li>
-                    <li>Headshot eliminations cause an explosion, damaging enemies within 0.5 tiles for <strong>30%</strong> weapon damage.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-5">
-                <h5>Crafting Costs:</h5>
-                <ul class="list-inline">
-                    <li class="list-inline-item">Blast Powder <strong>15</strong></li>
-                    <li class="list-inline-item">Sleek Mechanical Parts <strong>30</strong></li>
-                    <li class="list-inline-item">Active Powercell <strong>1</strong></li>
-                    <li class="list-inline-item">Obsidian Ore <strong>11</strong></li>
-                </ul>
+                <div class="col-sm-11">
+                    <ul class="list-unstyled">
+                        <li>Damage <strong>#= damage #</strong></li>
+                        <li>Critical Hit Chance <strong>#= critChance #</strong></li>
+                        <li>Critical Hit Damage <strong>#= critDamage #</strong></li>
+                        <li>Fire Rate <strong>#= fireRate #</strong></li>
+                        <li>Magazine Size <strong>#= magazineSize #</strong></li>
+                        <li>Range <strong>#= range #</strong></li>
+                        <li>Durability <strong>#= durability #</strong></li>
+                        <li>Reload Time <strong>#= reloadTime #</strong></li>
+                        <li>Ammo Cost <strong>#= ammoCost #</strong></li>
+                        <li>Impact <strong>#= impact #</strong></li>
+                    </ul>
+                </div>
+                <div class="pnlTraits col-sm-11"></div>
+                <div class="pnlMaterials col-sm-11"></div>
             </div>
         </div>
     </div>

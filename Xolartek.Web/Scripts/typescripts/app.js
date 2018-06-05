@@ -3,7 +3,16 @@ var MyClass = /** @class */ (function () {
     }
     MyClass.prototype.render = function (elementId, text) {
         var el = document.getElementById(elementId);
-        el.innerHTML = text;
+        el.innerHTML = "" + text;
+    };
+    MyClass.prototype.getInputValue = function (elementID) {
+        var inputElement = document.getElementById(elementID);
+        if (inputElement.value === '') {
+            return undefined;
+        }
+        else {
+            return inputElement.value;
+        }
     };
     return MyClass;
 }());
