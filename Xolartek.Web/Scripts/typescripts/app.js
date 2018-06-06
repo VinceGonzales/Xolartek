@@ -1,16 +1,27 @@
-var TraitImpact = /** @class */ (function () {
-    function TraitImpact() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var trait_1 = require("./trait");
+/// <reference path="material.ts" />
+var ViewModel = /** @class */ (function () {
+    function ViewModel() {
     }
-    return TraitImpact;
-}());
-var MyClass = /** @class */ (function () {
-    function MyClass() {
-    }
-    MyClass.prototype.render = function (elementId, text) {
+    ViewModel.prototype.updateTraits = function () {
+        var argArray = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            argArray[_i] = arguments[_i];
+        }
+        if (argArray.length > 0) {
+            for (var i = 0; i < argArray.length; i++) {
+                //update records
+            }
+        }
+        return new Array();
+    };
+    ViewModel.prototype.render = function (elementId, text) {
         var el = document.getElementById(elementId);
         el.innerHTML = "" + text;
     };
-    MyClass.prototype.getInputValue = function (elementID) {
+    ViewModel.prototype.getInputValue = function (elementID) {
         var inputElement = document.getElementById(elementID);
         if (inputElement.value === '') {
             return undefined;
@@ -19,12 +30,12 @@ var MyClass = /** @class */ (function () {
             return inputElement.value;
         }
     };
-    return MyClass;
+    return ViewModel;
 }());
 window.onload = function () {
-    var myClass = new MyClass();
-    myClass.render("content", "Hello World!");
-    var Damage = new TraitImpact();
+    var viewModel = new ViewModel();
+    viewModel.render("content", "Hello World!");
+    var Damage = new trait_1.default();
     Damage.id = 1;
     Damage.description = "Damage";
     Damage.impact = "+20%";

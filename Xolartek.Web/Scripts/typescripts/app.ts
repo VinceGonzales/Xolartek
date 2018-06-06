@@ -1,17 +1,17 @@
-﻿interface ITrait {
-    id: number;
-    description: string;
-}
-interface ITraitImpact extends ITrait {
-    impact: string;
-}
-class TraitImpact implements ITraitImpact {
-    id: number;
-    description: string;
-    impact: string;
-}
+﻿import TraitImpact from './trait';
+/// <reference path="material.ts" />
 
-class MyClass {
+class ViewModel {
+    updateTraits(...argArray: TraitImpact[]) : TraitImpact[] {
+        if (argArray.length > 0) {
+            for (var i = 0; i < argArray.length; i++) {
+                //update records
+            }
+        }
+
+        return new Array<TraitImpact>();
+    }
+
     render(elementId: string, text?: string) {
         let el: HTMLElement | null = document.getElementById(elementId);
         el!.innerHTML = `${text}`;
@@ -27,8 +27,9 @@ class MyClass {
 }
 
 window.onload = () => {
-    let myClass: MyClass = new MyClass();
-    myClass.render("content", "Hello World!");
+    let viewModel: ViewModel = new ViewModel();
+    viewModel.render("content", "Hello World!");
+
     let Damage: TraitImpact = new TraitImpact();
     Damage.id = 1;
     Damage.description = "Damage";

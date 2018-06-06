@@ -28,7 +28,6 @@ namespace Xolartek.Web.Controllers
             return "value";
         }
 
-        [Route("api/fortnite/traits/{desc}")]
         public IList<Trait> GetTrait(string desc)
         {
             IList<Trait> result = db.GetTraits(desc);
@@ -42,8 +41,7 @@ namespace Xolartek.Web.Controllers
             }
         }
 
-        [Route("api/fortnite/materials/{desc}")]
-        public IList<Material> GetMaterial(string desc)
+        public IList<Material> GetMaterial(string desc = null)
         {
             IList<Material> result = db.GetMaterials(desc);
             if (result != null)
