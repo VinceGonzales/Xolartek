@@ -4,7 +4,7 @@ EXECUTE [dbo].[InsertWeaponMelee]
 'DoomHammer'
 ,'Hardware: Heavy. A slow-swinging hammer with powerful knockback. Overhead Smash: Heavy attack that does increased damage and knockback.'
 ,375 -- Durability INT,
-,74 -- WeaponLevel INT,
+,25 -- WeaponLevel INT,
 ,3 -- Stars INT,
 ,'3,581.7' -- Damage NVARCHAR(100),
 ,'20%' -- CritChance NVARCHAR(100),
@@ -37,7 +37,7 @@ EXECUTE [dbo].[InsertWeaponMelee]
 'Stormblade'
 ,'Sword: High Tech. Energized blade with a fast swing speed for great sustained damage. Deals energy damage that is fairly effective against elemental enemies. Cut and Thrust: A series of three heavy attacks that cut twice and thrust once while moving forward.'
 ,375 -- Durability INT,
-,82 -- WeaponLevel INT,
+,30 -- WeaponLevel INT,
 ,3 -- Stars INT,
 ,'4,324.8' -- Damage NVARCHAR(100),
 ,'15%' -- CritChance NVARCHAR(100),

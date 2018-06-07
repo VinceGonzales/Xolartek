@@ -4,7 +4,7 @@ EXECUTE [dbo].[InsertWeaponTrap]
 'Wall Dynamo'
 ,'Does electric damage to all enemies in range when trap is triggered.' -- Description - nvarchar(max)
 ,36   -- Durability - int
-,97   -- WeaponLevel - int
+,35   -- WeaponLevel - int
 ,4   -- Stars - int
 ,'1,050.7' -- Damage - nvarchar(100)
 ,'22.5%' -- CritChance - nvarchar(100)

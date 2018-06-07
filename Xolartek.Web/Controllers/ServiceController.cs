@@ -28,30 +28,14 @@ namespace Xolartek.Web.Controllers
             return "value";
         }
 
-        public IList<Trait> GetTrait(string desc)
+        public IList<Trait> GetTrait()
         {
-            IList<Trait> result = db.GetTraits(desc);
-            if (result != null)
-            {
-                return result;
-            }
-            else
-            {
-                return new List<Trait>();
-            }
+            return db.GetTraits();
         }
 
-        public IList<Material> GetMaterial(string desc = null)
+        public IList<Material> GetMaterial()
         {
-            IList<Material> result = db.GetMaterials(desc);
-            if (result != null)
-            {
-                return result;
-            }
-            else
-            {
-                return new List<Material>();
-            }
+            return db.GetMaterials();
         }
 
         public string Post([FromBody]string value)

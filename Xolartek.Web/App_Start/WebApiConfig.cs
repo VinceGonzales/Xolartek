@@ -22,18 +22,6 @@ namespace Xolartek.Web
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Routes.MapHttpRoute(
-                name: "FortniteTraits",
-                routeTemplate: "api/fortnite/traits/{desc}",
-                defaults: new { controller = "service", action = "gettrait", desc = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "FortniteMaterials",
-                routeTemplate: "api/fortnite/materials/{desc}",
-                defaults: new { controller = "service", action = "getmaterial", desc = RouteParameter.Optional }
-            );
-
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().FirstOrDefault();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
