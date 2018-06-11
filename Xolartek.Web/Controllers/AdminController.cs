@@ -31,5 +31,11 @@ namespace Xolartek.Web.Controllers
             IList<UserRole> roles = db.GetRoles();
             return View(roles);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

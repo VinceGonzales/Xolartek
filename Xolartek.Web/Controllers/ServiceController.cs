@@ -2,8 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Web.Mvc;
 using System.Web.Http;
 using Xolartek.Web.Models;
 
@@ -18,9 +17,30 @@ namespace Xolartek.Web.Controllers
             db = new FortniteRepository(ctx);
         }
 
-        public IList<RangedWeapon> Get()
+        public ViewModel Get()
         {
-            return db.GetRangedWeapons();
+            ViewModel vm = new ViewModel();
+            vm.RangedWeapons = db.GetRangedWeapons();
+            vm.MeleeWeapons = db.GetMeleeWeapons();
+            vm.TrapWeapons = db.GetTrapWeapons();
+            vm.Rarities = db.GetRarities().Select(r => new SelectListItem
+            {
+                Value = r.Id.ToString(),
+                Text = r.Description
+            });
+            vm.WeaponTypes = db.GetTypes().Select(r => new SelectListItem
+            {
+                Value = r.Id.ToString(),
+                Text = r.Description
+            });
+            vm.WeaponEdition = db.GetEditions().Select(r => new SelectListItem
+            {
+                Value = r.Id.ToString(),
+                Text = r.Description
+            });
+            vm.Traits = db.GetTraits();
+            vm.Materials = db.GetMaterials();
+            return vm;
         }
 
         public string Get(int id)
@@ -28,15 +48,15 @@ namespace Xolartek.Web.Controllers
             return "value";
         }
 
-        public IList<Trait> GetTrait()
-        {
-            return db.GetTraits();
-        }
-
-        public IList<Material> GetMaterial()
-        {
-            return db.GetMaterials();
-        }
+        //public IList<Trait> GetTrait()
+        //{
+        //    return db.GetTraits();
+        //}
+        //
+        //public IList<Material> GetMaterial()
+        //{
+        //    return db.GetMaterials();
+        //}
 
         public string Post([FromBody]string value)
         {
@@ -49,6 +69,12 @@ namespace Xolartek.Web.Controllers
 
         public void Delete(int id)
         {
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

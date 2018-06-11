@@ -2,13 +2,14 @@
 using Domain.Accounts;
 using Domain.Fortnite;
 using Ninject.Infrastructure.Language;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 namespace Xolartek.Web.Models
 {
-    public class AccountRepository : IAccountDb
+    public class AccountRepository : IAccountDb, IDisposable
     {
         private IAccountDb db;
 
@@ -60,8 +61,28 @@ namespace Xolartek.Web.Models
             }
             return result;
         }
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    (db as DbContext).Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
-    public class FortniteRepository
+    public class FortniteRepository : IDisposable
     {
         private IFortniteDb db;
 
@@ -434,6 +455,26 @@ namespace Xolartek.Web.Models
             weapon.Id = db.PostWeaponTrap(data);
 
             return weapon;
+        }
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    (db as DbContext).Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

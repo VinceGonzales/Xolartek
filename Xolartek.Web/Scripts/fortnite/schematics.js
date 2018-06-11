@@ -22,7 +22,7 @@
 };
 
 $(function () {
-    var urlGetRangeWeapons = "/api/service";
+    var urlGetRangeWeapons = "/api/range";
 
     window.dsRangeWeapon = new kendo.data.DataSource({
         transport: {
