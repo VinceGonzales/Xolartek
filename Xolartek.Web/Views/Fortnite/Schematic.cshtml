@@ -10,6 +10,20 @@
     <script>
         $(function () {
             kendo.bind($("#FormCreate"), {});
+            $("#FormCreate").submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/api/range",
+                    data: $("#FormCreate").serialize(),
+                    error: function (xhr, status, error) {
+                        console.error("error routine: " + error);
+                    },
+                    success: function (result) {
+                        console.log("Success!");
+                    }
+                });
+            });
         });
     </script>
 }
