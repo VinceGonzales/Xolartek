@@ -115,6 +115,8 @@ namespace Xolartek.Web.Models
                 weapon.AmmoCost = w.AmmoCost;
                 weapon.Impact = w.Impact;
 
+                weapon.DPS = GetDPS(weapon.Damage, weapon.FireRate);
+
                 weapon.Picture = w.PictureId.HasValue ? w.Picture.Source : "";
                 weapon.WeaponEdition = w.WeaponEditionId.HasValue ? w.WeaponEditionId.Value : 0;
                 weapon.WeaponType = w.WeaponTypeId.HasValue ? w.WeaponTypeId.Value : 0;
@@ -140,6 +142,7 @@ namespace Xolartek.Web.Models
                 result.Level = weapon.Level;
                 result.Stars = weapon.Stars;
                 result.Damage = weapon.Damage;
+                result.DPS = GetDPS(weapon.Damage, weapon.FireRate);
                 result.CritChance = weapon.CritChance;
                 result.CritDamage = weapon.CritDamage;
                 result.FireRate = weapon.FireRate;
@@ -455,6 +458,18 @@ namespace Xolartek.Web.Models
             weapon.Id = db.PostWeaponTrap(data);
 
             return weapon;
+        }
+
+        private decimal GetDPS(string damage, string firerate)
+        {
+            decimal dps = 0.0M;
+            decimal dmg = 0.0M;
+            decimal rate = 0.0M;
+            if (decimal.TryParse(damage, out dmg) && decimal.TryParse(firerate, out rate))
+            {
+                dps = dmg * rate;
+            }
+            return decimal.Round(dps, 2);
         }
 
         private bool disposed = false;

@@ -12,6 +12,7 @@ namespace Xolartek.Web.Models
         public int Level { get; set; }
         public int Stars { get; set; }
         public string Damage { get; set; }
+        public decimal DPS { get; set; }
         [Display(Name = "Critical Chance")]
         public string CritChance { get; set; }
         [Display(Name = "Critical Damage")]

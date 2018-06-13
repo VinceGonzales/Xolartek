@@ -6,6 +6,7 @@
     level: { type: "number" },
     stars: { type: "number" },
     damage: { type: "string" },
+    dps: { type: "number" },
     critChance: { type: "string" },
     critDamage: { type: "string" },
     fireRate: { type: "string" },
@@ -47,7 +48,7 @@ $(function () {
             { field: "name", title: "Name", width: 200 },
             { field: "level", title: "Level", width: 80 },
             { field: "stars", title: "Stars", width: 80, template: fn_TemplStars },
-            { field: "damage", title: "DPS", width: 100, template: fn_TemplDPS }
+            { field: "dps", title: "DPS", width: 100, template: fn_TemplDPS }
 
         ],
         filterable: false,
@@ -80,10 +81,7 @@ function fn_TemplStars(item) {
     return str;
 }
 function fn_TemplDPS(item) {
-    var str = "";
-    var rate = parseFloat(item.fireRate.replace(',', ''));
-    var dmg = parseFloat(item.damage.replace(',', ''));
-    str = (rate * dmg).toLocaleString('en');
+    var str = item.dps.toLocaleString('en');
     return str;
 }
 function fn_DetailInit(element) {
