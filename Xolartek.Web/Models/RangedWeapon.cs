@@ -34,7 +34,8 @@ namespace Xolartek.Web.Models
         [Display(Name = "Edition")]
         public int WeaponEdition { get; set; }
         [Display(Name = "Type")]
-        public int WeaponType { get; set; }
+        public int WeaponTypeId { get; set; }
+        public string WeaponType { get; set; }
         public int Rarity { get; set; }
         public IList<TraitImpact> Traits { get; set; }
         public IList<MaterialCost> Materials { get; set; }

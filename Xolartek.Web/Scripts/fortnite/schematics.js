@@ -18,7 +18,7 @@
     impact: { type: "string" },
     picture: { type: "string" },
     weaponEdition: { type: "number" },
-    weaponType: { type: "number" },
+    weaponType: { type: "string" },
     rarity: { type: "number" }
 };
 
@@ -45,7 +45,7 @@ $(function () {
         columns: [
             { field: "id", title: "Id", hidden: true },
             { field: "picture", title: "-", width: 90, template: fn_TemplImg },
-            { field: "name", title: "Name", width: 200 },
+            { field: "name", title: "Name", width: 200, encoded: false },
             { field: "level", title: "Level", width: 80 },
             { field: "stars", title: "Stars", width: 80, template: fn_TemplStars },
             { field: "dps", title: "DPS", width: 100, template: fn_TemplDPS }

@@ -5,6 +5,7 @@ using Ninject.Infrastructure.Language;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Xolartek.Web.Models
@@ -119,7 +120,17 @@ namespace Xolartek.Web.Models
 
                 weapon.Picture = w.PictureId.HasValue ? w.Picture.Source : "";
                 weapon.WeaponEdition = w.WeaponEditionId.HasValue ? w.WeaponEditionId.Value : 0;
-                weapon.WeaponType = w.WeaponTypeId.HasValue ? w.WeaponTypeId.Value : 0;
+
+                if(w.WeaponTypeId.HasValue)
+                {
+                    weapon.WeaponTypeId = w.WeaponTypeId.Value;
+                    weapon.WeaponType = w.WeaponType.Description;
+                }
+                else
+                {
+                    weapon.WeaponTypeId = 0;
+                }
+
                 weapon.Rarity = w.Rarity.Id;
                 weapon.Traits = w.Traits.Select(t => new TraitImpact(t.Id, t.Trait.Description, t.Impact)).ToList();
                 weapon.Materials = w.Materials.Select(m => new MaterialCost(m.Id, m.Material.Description, m.Cost)).ToList();
@@ -154,7 +165,15 @@ namespace Xolartek.Web.Models
                 result.Impact = weapon.Impact;
                 result.Picture = weapon.PictureId.HasValue ? weapon.Picture.Source : "";
                 result.WeaponEdition = weapon.WeaponEditionId.HasValue ? weapon.WeaponEditionId.Value : 0;
-                result.WeaponType = weapon.WeaponTypeId.HasValue ? weapon.WeaponTypeId.Value : 0;
+                if (weapon.WeaponTypeId.HasValue)
+                {
+                    result.WeaponTypeId = weapon.WeaponTypeId.Value;
+                    result.WeaponType = weapon.WeaponType.Description;
+                }
+                else
+                {
+                    result.WeaponTypeId = 0;
+                }
                 result.Rarity = weapon.Rarity.Id;
                 result.Traits = weapon.Traits.Select(t => new TraitImpact(t.Id, t.Trait.Description, t.Impact)).ToList();
                 result.Materials = weapon.Materials.Select(m => new MaterialCost(m.Id, m.Material.Description, m.Cost)).ToList();
@@ -346,7 +365,7 @@ namespace Xolartek.Web.Models
             data.Impact = weapon.Impact;
             data.Rarity = db.Rarities.FirstOrDefault(r => r.Id.Equals(weapon.Rarity));
             data.WeaponEdition = db.WeaponEditions.FirstOrDefault(e => e.Id.Equals(weapon.WeaponEdition));
-            data.WeaponType = db.WeaponTypes.FirstOrDefault(t => t.Id.Equals(weapon.WeaponType));
+            data.WeaponType = db.WeaponTypes.FirstOrDefault(t => t.Id.Equals(weapon.WeaponTypeId));
 
             Domain.Picture pict = db.Pictures.FirstOrDefault(p => p.Alternate.Equals(weapon.Name));
             if(pict != null)
@@ -470,6 +489,74 @@ namespace Xolartek.Web.Models
                 dps = dmg * rate;
             }
             return decimal.Round(dps, 2);
+        }
+
+        public IList<RangedWeapon> GetWeaponsByTrait(string trait)
+        {
+            List<RangedWeapon> result = new List<RangedWeapon>();
+            SqlParameter param1 = new SqlParameter("Description", System.Data.SqlDbType.NVarChar);
+            param1.SqlValue = trait;
+            IEnumerable<WeaponRange> data = (db as DbContext).Database.SqlQuery<WeaponRange>(@"
+                                        SELECT wr.*
+                                        FROM dbo.TraitRanges tr
+                                        INNER JOIN dbo.WeaponRanges wr ON tr.Range_Id = wr.Id
+                                        INNER JOIN dbo.Traits t ON tr.Trait_Id = t.Id
+                                        WHERE t.[Description] LIKE @Description
+                                        ", param1).ToEnumerable();
+            foreach (WeaponRange w in data)
+            {
+                RangedWeapon weapon = new RangedWeapon();
+                weapon.Id = w.Id;
+                weapon.Name = w.Name;
+                weapon.Description = w.Description;
+                weapon.Durability = w.Durability;
+                weapon.Level = w.Level;
+                weapon.Stars = w.Stars;
+                weapon.Damage = w.Damage;
+                weapon.CritChance = w.CritChance;
+                weapon.CritDamage = w.CritDamage;
+                weapon.FireRate = w.FireRate;
+                weapon.MagazineSize = w.MagazineSize;
+                weapon.Range = w.Range;
+                weapon.DurabilityPerUse = w.DurabilityPerUse;
+                weapon.ReloadTime = w.ReloadTime;
+                weapon.AmmoCost = w.AmmoCost;
+                weapon.Impact = w.Impact;
+
+                weapon.DPS = GetDPS(weapon.Damage, weapon.FireRate);
+
+                if(w.PictureId.HasValue)
+                {
+                    weapon.Picture = db.Pictures.FirstOrDefault(p => p.Id.Equals(w.PictureId.Value)).Source;
+                }
+                
+                weapon.WeaponEdition = w.WeaponEditionId.HasValue ? w.WeaponEditionId.Value : 0;
+
+                if (w.WeaponTypeId.HasValue)
+                {
+                    weapon.WeaponTypeId = w.WeaponTypeId.Value;
+                    weapon.WeaponType = db.WeaponTypes.FirstOrDefault(t => t.Id.Equals(w.WeaponTypeId.Value)).Description;
+                }
+                else
+                {
+                    weapon.WeaponTypeId = 0;
+                }
+
+                weapon.Rarity = w.RarityId;
+                weapon.Traits = new List<TraitImpact>();
+                foreach(var tr in db.TraitRanges.Where(x => x.Range.Id.Equals(w.Id)))
+                {
+                    weapon.Traits.Add(new TraitImpact(tr.Id, tr.Trait.Description, tr.Impact));
+                }
+                weapon.Materials = new List<MaterialCost>();
+                foreach(var m in db.MaterialRanges.Where(x => x.Range.Id.Equals(w.Id)))
+                {
+                    weapon.Materials.Add(new MaterialCost(m.Id, m.Material.Description, m.Cost));
+                }
+
+                result.Add(weapon);
+            }
+            return result;
         }
 
         private bool disposed = false;

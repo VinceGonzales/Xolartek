@@ -18,15 +18,19 @@ namespace Xolartek.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            ReportVM viewmodel = new ReportVM();
+            viewmodel.WaterWeapons = db.GetWeaponsByTrait("Water Damage");
+            viewmodel.FireWeapons = db.GetWeaponsByTrait("Fire Damage");
+            viewmodel.NatureWeapons = db.GetWeaponsByTrait("Nature Damage");
+            return View(viewmodel);
         }
 
         public ActionResult Schematics()
         {
             ViewModel vm = new ViewModel();
-            vm.RangedWeapons = db.GetRangedWeapons();
-            vm.MeleeWeapons = db.GetMeleeWeapons();
-            vm.TrapWeapons = db.GetTrapWeapons();
+            //vm.RangedWeapons = db.GetRangedWeapons();
+            //vm.MeleeWeapons = db.GetMeleeWeapons();
+            //vm.TrapWeapons = db.GetTrapWeapons();
             return View(vm);
         }
 

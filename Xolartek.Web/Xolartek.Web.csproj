@@ -165,6 +165,7 @@
     <Compile Include="Models\Material.cs" />
     <Compile Include="Models\MeleeWeapon.cs" />
     <Compile Include="Models\RangedWeapon.cs" />
+    <Compile Include="Models\ReportVM.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Trait.cs" />
@@ -294,6 +295,7 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\fortnite\reports.js" />
     <Content Include="Scripts\fortnite\schematics.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
