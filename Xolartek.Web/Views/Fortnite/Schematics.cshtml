@@ -1,7 +1,16 @@
-﻿@using Xolartek.Web.Models;
+﻿@using System.Text.RegularExpressions;
+@using Xolartek.Web.Models;
 @model ViewModel
 @{
-    ViewBag.Title = "Fortnite Schematics";
+    string result = "";
+    string myString = "The quick brown fox jumps over the lazy dog";
+    string regex = "(a|e|i|o|u)";
+    foreach (Match vowel in Regex.Matches(myString, regex))
+    {
+        result += vowel.Value;
+    }
+    ViewBag.Title = result;
+
 }
 @section header {
     <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.common-bootstrap.min.css" />

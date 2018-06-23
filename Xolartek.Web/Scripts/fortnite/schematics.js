@@ -27,7 +27,14 @@ $(function () {
 
     window.dsRangeWeapon = new kendo.data.DataSource({
         transport: {
-            read: { dataType: "json", url: urlGetRangeWeapons }
+            read: { dataType: "json", url: urlGetRangeWeapons },
+            update: { dataType: "json", url: urlGetRangeWeapons },
+            create: { dataType: "json", url: urlGetRangeWeapons },
+            parameterMap: function (options, operation) {
+                if (operation !== "read" && options.models) {
+                    return { models: kendo.stringify(options.models) };
+                }
+            }
         },
         schema: {
             model: {
@@ -45,14 +52,17 @@ $(function () {
         columns: [
             { field: "id", title: "Id", hidden: true },
             { field: "picture", title: "-", width: 90, template: fn_TemplImg },
-            { field: "name", title: "Name", width: 200, encoded: false },
+            { field: "name", title: "Name", width: 90, encoded: false },
             { field: "level", title: "Level", width: 80 },
             { field: "stars", title: "Stars", width: 80, template: fn_TemplStars },
-            { field: "dps", title: "DPS", width: 100, template: fn_TemplDPS }
-
+            { field: "dps", title: "DPS", width: 90, template: fn_TemplDPS },
+            { command: ["edit"], title: "&nbsp;", width: 100 }
         ],
         filterable: false,
         sortable: true,
+        height: 550,
+        editable: "popup",
+        toolbar: ["create"],
         detailTemplate: kendo.template($("#tmplDetail").html()),
         detailInit: fn_DetailInit,
         detailExpand: function (e) {

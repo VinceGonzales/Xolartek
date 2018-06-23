@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Http;
 using Xolartek.Web.Models;
+using System.Net.Http;
+using System.Net;
 
 namespace Xolartek.Web.Controllers
 {
@@ -48,27 +50,19 @@ namespace Xolartek.Web.Controllers
             return "value";
         }
 
-        //public IList<Trait> GetTrait()
-        //{
-        //    return db.GetTraits();
-        //}
-        //
-        //public IList<Material> GetMaterial()
-        //{
-        //    return db.GetMaterials();
-        //}
-
-        public string Post([FromBody]string value)
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            return value;
+            return new HttpResponseMessage(HttpStatusCode.NotImplemented);
         }
 
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            return new HttpResponseMessage(HttpStatusCode.NotImplemented);
         }
 
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            return new HttpResponseMessage(HttpStatusCode.NotImplemented);
         }
 
         protected override void Dispose(bool disposing)

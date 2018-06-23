@@ -837,3 +837,54 @@ EXECUTE [dbo].[InsertTraitRange] '', @weaponId, 'Causes Affliction damage for 6 
 EXECUTE [dbo].[InsertMaterialRange] 15, 'Blast Powder', @weaponId
 EXECUTE [dbo].[InsertMaterialRange] 12, 'Sturdy Mechanical Parts', @weaponId
 EXECUTE [dbo].[InsertMaterialRange] 3, 'Malachite Ore', @weaponId
+
+----------------------
+
+EXECUTE [dbo].[InsertWeaponRange] 
+'Krypton Pistol'
+,'Pistol: Neon. Shoots energized rounds at a rapid rate for high sustained damage. Deals energy damage, which is fairly effective against all types of elemental enemies.'
+-- Durability
+,375
+-- Level
+,25
+-- Stars
+,3
+-- Damage
+,'3,803.6'
+-- CritChance
+,'15%'
+-- CritDamage
+,'50%'
+-- FireRate
+,'5.0'
+-- MagazineSize
+,12
+-- Range
+,'3,584'
+-- DurabilityPerUse
+,'0.12'
+-- ReloadTime
+,'1.6'
+-- AmmoCost
+,1
+-- Impact
+,'288.2'
+,'~/content/images/T-Icon-Weapons-SK-Neon-Glow-Pistol-L.png.png'
+,'Neon'
+,'Pistol'
+,'Legendary'
+
+SET @weaponId = (SELECT IDENT_CURRENT('WeaponRanges'))
+
+EXECUTE [dbo].[InsertTraitRange] '+10%', @weaponId, 'Energy Damage'
+EXECUTE [dbo].[InsertTraitRange] '+20%', @weaponId, 'Damage'
+EXECUTE [dbo].[InsertTraitRange] '+25%', @weaponId, 'Magazine Size'
+EXECUTE [dbo].[InsertTraitRange] '+20%', @weaponId, 'Damage'
+EXECUTE [dbo].[InsertTraitRange] '+30%', @weaponId, 'Damage to slowed and snared targets'
+EXECUTE [dbo].[InsertTraitRange] '', @weaponId, 'Damage dealt with this weapon snares the target by 30% for 6 seconds.'
+
+EXECUTE [dbo].[InsertMaterialRange] 7, 'Quartz Crystal', @weaponId
+EXECUTE [dbo].[InsertMaterialRange] 24, 'Sturdy Twine', @weaponId
+EXECUTE [dbo].[InsertMaterialRange] 1, 'Active Powercell', @weaponId
+EXECUTE [dbo].[InsertMaterialRange] 8, 'Malachite Ore', @weaponId
+EXECUTE [dbo].[InsertMaterialRange] 15, 'Batteries', @weaponId

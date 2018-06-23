@@ -19,7 +19,14 @@ namespace Xolartek.Web.Controllers
 
         public IEnumerable<RangedWeapon> Get()
         {
-            return db.GetRangedWeapons();
+            try
+            {
+                return db.GetRangedWeapons();
+            }
+            catch (Exception e)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         public RangedWeapon Get(int id)
@@ -32,17 +39,34 @@ namespace Xolartek.Web.Controllers
             return result;
         }
 
-        public void Post([FromBody]RangedWeapon data)
+        public HttpResponseMessage Post([FromBody]RangedWeapon data)
         {
-            RangedWeapon result = db.PostRangedWeapon(data);
+            try
+            {
+                RangedWeapon result = db.PostRangedWeapon(data);
+                if (result.Id > 0)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.Created);
+                }
+                else
+                {
+                    return new HttpResponseMessage(HttpStatusCode.BadRequest);
+                }
+            }
+            catch(Exception e)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            return new HttpResponseMessage(HttpStatusCode.NotImplemented);
         }
 
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            return new HttpResponseMessage(HttpStatusCode.NotImplemented);
         }
 
         protected override void Dispose(bool disposing)
