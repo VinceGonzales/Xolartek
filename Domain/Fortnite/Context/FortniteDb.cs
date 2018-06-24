@@ -27,6 +27,7 @@ namespace Domain.Fortnite
         public DbSet<WeaponTrap> WeaponTraps { get; set; }
         public DbSet<WeaponType> WeaponTypes { get; set; }
         public DbSet<WeaponEdition> WeaponEditions { get; set; }
+        public DbSet<Schematic> Schematics { get; set; }
         #endregion dbsets
 
         public int PostWeaponRange(WeaponRange weapon)
@@ -145,6 +146,11 @@ namespace Domain.Fortnite
         IQueryable<WeaponEdition> IFortniteDb.WeaponEditions
         {
             get { return WeaponEditions; }
+        }
+
+        IQueryable<Schematic> IFortniteDb.Schematics
+        {
+            get { return Schematics; }
         }
         #endregion Queryables
     }

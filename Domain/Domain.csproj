@@ -77,6 +77,7 @@
     <Compile Include="Fortnite\Entities\MaterialRange.cs" />
     <Compile Include="Fortnite\Entities\MaterialTrap.cs" />
     <Compile Include="Fortnite\Entities\Rarity.cs" />
+    <Compile Include="Fortnite\Entities\Schematic.cs" />
     <Compile Include="Fortnite\Entities\Trait.cs" />
     <Compile Include="Fortnite\Entities\TraitMelee.cs" />
     <Compile Include="Fortnite\Entities\TraitRange.cs" />

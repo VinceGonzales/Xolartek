@@ -559,6 +559,28 @@ namespace Xolartek.Web.Models
             return result;
         }
 
+        public IList<Schematic> GetSchematicList()
+        {
+            List<Schematic> result = new List<Schematic>();
+            foreach(Domain.Fortnite.Schematic s in db.Schematics)
+            {
+                Schematic schema = new Schematic();
+                schema.Id = s.Id;
+                schema.Name = s.Name;
+                schema.Description = s.Description;
+                schema.Damage = s.Damage;
+                schema.DPS = s.DPS;
+                schema.AttackRate = s.AttackRate;
+                schema.CritChance = s.CritChance;
+                schema.CritDamage = s.CritDamage;
+                schema.Impact = s.Impact;
+                schema.Range = s.Range;
+
+                result.Add(schema);
+            }
+            return result;
+        }
+
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)

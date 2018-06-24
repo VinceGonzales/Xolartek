@@ -27,7 +27,7 @@ EXECUTE [dbo].[InsertTraitMelee] '+22.5%', @weaponId, 'Damage to afflicted targe
 EXECUTE [dbo].[InsertTraitMelee] '', @weaponId, 'Causes Affliction damage for 6 seconds'
 
 EXECUTE [dbo].[InsertMaterialMelee] 20, 'Planks', @weaponId
-EXECUTE [dbo].[InsertMaterialMelee] 30, 'Sturdy Twin', @weaponId
+EXECUTE [dbo].[InsertMaterialMelee] 30, 'Sturdy Twine', @weaponId
 EXECUTE [dbo].[InsertMaterialMelee] 1, 'Active Powercell', @weaponId
 EXECUTE [dbo].[InsertMaterialMelee] 11, 'Malachite Ore', @weaponId
 

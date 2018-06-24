@@ -25,5 +25,6 @@ namespace Domain.Fortnite
         IQueryable<WeaponTrap> WeaponTraps { get; }
         IQueryable<WeaponType> WeaponTypes { get; }
         IQueryable<WeaponEdition> WeaponEditions { get; }
+        IQueryable<Schematic> Schematics { get; }
     }
 }

@@ -168,6 +168,7 @@
     <Compile Include="Models\ReportVM.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Schematic.cs" />
     <Compile Include="Models\Trait.cs" />
     <Compile Include="Models\TrapWeapon.cs" />
     <Compile Include="Models\UserAccount.cs" />

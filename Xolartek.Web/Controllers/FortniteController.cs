@@ -36,8 +36,8 @@ namespace Xolartek.Web.Controllers
 
         public ActionResult Attributes()
         {
-            IList<Xolartek.Web.Models.Trait> vm = new List<Xolartek.Web.Models.Trait>();
-            vm = db.GetTraits();
+            IList<Xolartek.Web.Models.Schematic> vm = new List<Xolartek.Web.Models.Schematic>();
+            vm = db.GetSchematicList();
             return View(vm);
         }
 
